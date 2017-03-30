@@ -156,10 +156,10 @@
             </objects>
             <point key="canvasLocation" x="1174" y="536"/>
         </scene>
-        <!--Map To Select View Controller-->
+        <!--Map Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="mapToSelectViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="mapMapViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -182,12 +182,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="bgO-LH-Kco"/>
                     <connections>
-                        <outlet property="myMap" destination="Zct-BF-qqt" id="0zq-sw-8wY"/>
+                        <outlet property="map1" destination="Zct-BF-qqt" id="Bic-jJ-dGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2985" y="136.26760563380282"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rbF-2k-j7u">
+            <objects>
+                <viewController id="85D-Dt-cy3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WAT-1M-p9U"/>
+                        <viewControllerLayoutGuide type="bottom" id="3aA-AT-3d2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kc5-b0-6B4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBh-q4-MJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3743" y="136"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i9d-Z7-Y35">

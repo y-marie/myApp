@@ -14,9 +14,9 @@
 		5F4A3DDD1E88F424005F26E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3DDB1E88F424005F26E5 /* LaunchScreen.storyboard */; };
 		5F4A3DE81E88F424005F26E5 /* myAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3DE71E88F424005F26E5 /* myAppTests.swift */; };
 		5F4A3DF31E88F424005F26E5 /* myAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3DF21E88F424005F26E5 /* myAppUITests.swift */; };
-		5F4A3E011E88F7F0005F26E5 /* mapToSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E001E88F7F0005F26E5 /* mapToSelectViewController.swift */; };
 		5F4A3E031E88F986005F26E5 /* writeDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */; };
 		5F4A3E051E88F9DB005F26E5 /* memoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */; };
+		5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE657261E8CD4580090ACAC /* mapMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,9 @@
 		5F4A3DEE1E88F424005F26E5 /* myAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3DF21E88F424005F26E5 /* myAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAppUITests.swift; sourceTree = "<group>"; };
 		5F4A3DF41E88F424005F26E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F4A3E001E88F7F0005F26E5 /* mapToSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapToSelectViewController.swift; sourceTree = "<group>"; };
 		5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writeDiaryViewController.swift; sourceTree = "<group>"; };
 		5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoViewController.swift; sourceTree = "<group>"; };
+		5FE657261E8CD4580090ACAC /* mapMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +109,9 @@
 				5F4A3DD91E88F424005F26E5 /* Assets.xcassets */,
 				5F4A3DDB1E88F424005F26E5 /* LaunchScreen.storyboard */,
 				5F4A3DDE1E88F424005F26E5 /* Info.plist */,
-				5F4A3E001E88F7F0005F26E5 /* mapToSelectViewController.swift */,
 				5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */,
 				5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */,
+				5FE657261E8CD4580090ACAC /* mapMapViewController.swift */,
 			);
 			path = myApp;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 				5F4A3E031E88F986005F26E5 /* writeDiaryViewController.swift in Sources */,
 				5F4A3DD51E88F424005F26E5 /* ViewController.swift in Sources */,
 				5F4A3DD31E88F424005F26E5 /* AppDelegate.swift in Sources */,
-				5F4A3E011E88F7F0005F26E5 /* mapToSelectViewController.swift in Sources */,
+				5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

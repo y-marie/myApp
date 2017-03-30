@@ -1,9 +1,7 @@
-
-
 import UIKit
 import MapKit
 
-class mapToSelectViewController: UIViewController {
+class mapToSelectViewController: UIViewController,MKMapViewDelegate {
 
     @IBOutlet weak var myMap: MKMapView!
     
@@ -22,8 +20,17 @@ class mapToSelectViewController: UIViewController {
         
         myMap.addAnnotation(myPin)
         
+        let pinView = myMap.dequeueReusableAnnotationView as? MKPinAnnotationView
         
-
+        pinView?.canShowCallout = true
+        
+        let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
+        pinView?.rightCalloutAccessoryView = rightButton as? UIView
+        
+        
+        func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            print(#function)
+        }
     }
 
     override func didReceiveMemoryWarning() {
