@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class mapMapViewController: UIViewController {
+class mapMapViewController: UIViewController, MKMapViewDelegate {
     
   @IBOutlet weak var map1: MKMapView!
 
@@ -19,8 +19,50 @@ class mapMapViewController: UIViewController {
         
         map1.addAnnotation(myPin)
         
+//        let reuseId = "pin"
+//        
+//        var pinView = map1.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+//        
+//        pinView?.canShowCallout = true
+//        
+//        let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
+//        pinView?.rightCalloutAccessoryView = rightButton as? UIView
+
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+
+    
+    
+        let reuseId = "pin"
+        var pinView = map1.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+//            pinView?.animatesDrop = true
+        }
+        else {
+            pinView?.annotation = annotation
+        }
+        let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
+        
+        pinView?.rightCalloutAccessoryView = rightButton as? UIView
+        
+        return pinView
     }
 
+    
+//    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        print(#function)
+//    }
+    
+    private func mapView(mapView: MKMapView,annotationView View: MKAnnotation,calloutAccessoryControlTapped control:UIControl){
+        print(#function)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

@@ -16,6 +16,7 @@
 		5F4A3DF31E88F424005F26E5 /* myAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3DF21E88F424005F26E5 /* myAppUITests.swift */; };
 		5F4A3E031E88F986005F26E5 /* writeDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */; };
 		5F4A3E051E88F9DB005F26E5 /* memoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */; };
+		5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */; };
 		5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE657261E8CD4580090ACAC /* mapMapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		5F4A3DF41E88F424005F26E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writeDiaryViewController.swift; sourceTree = "<group>"; };
 		5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoViewController.swift; sourceTree = "<group>"; };
+		5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showDiaryViewController.swift; sourceTree = "<group>"; };
 		5FE657261E8CD4580090ACAC /* mapMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */,
 				5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */,
 				5FE657261E8CD4580090ACAC /* mapMapViewController.swift */,
+				5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */,
 			);
 			path = myApp;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				5F4A3DD51E88F424005F26E5 /* ViewController.swift in Sources */,
 				5F4A3DD31E88F424005F26E5 /* AppDelegate.swift in Sources */,
 				5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */,
+				5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
