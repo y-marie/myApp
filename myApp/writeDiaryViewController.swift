@@ -9,8 +9,9 @@
 import UIKit
 import Photos
 import MobileCoreServices
+import CoreData
 
-class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     @IBOutlet weak var textToWrite: UITextView!
     
@@ -23,34 +24,70 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var scPic: UIImageView!
     
     var diaryList = NSMutableArray()
+    var selectedDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        diaryList = [["title":"title1","date":"2017-03-27","diary":"日記"]]
-        
-        var myDefault = UserDefaults.standard
-        
-        if (myDefault.object(forKey:"diaryList") != nil){
-            diaryList = NSMutableArray(array: myDefault.object(forKey:"diaryList") as! NSMutableArray)
-        }
-        print(diaryList)
-    }
+        read()
+  }
     
+    func read(){
+        
+        diaryList = NSMutableArray()
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //エンティティを操作するためのオブジェクトを作成
+        let viewContext = appDelegate.persistentContainer.viewContext
+        
+        let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
+        
+        do{
+            //データを一括取得
+            let fetchResults = try viewContext.fetch(query)
+            
+            //データの取得
+            for result: AnyObject in fetchResults{
+                
+                let title: String? = result.value(forKey: "title") as? String
+                
+                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+                
+                let content: String? = result.value(forKey:"content") as? String
+                
+                let image1: String? = result.value(forKey: "image1") as? String
+                
+                let image2: String? = result.value(forKey: "image2") as? String
+                
+                let date: Date? = result.value(forKey: "date") as? Date
+                
+                
+                //("title:\(title) saveDate:\(saveDate)")
+                
+                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
+            }
+        }catch{
+        }
+
+}
     @IBAction func tapToSave(_ sender: UIButton) {
         
-        diaryList.add(["title":myTitle.text,"date":myDate.text,"diary":textToWrite.text])
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        print(diaryList)
-      
-        //写真も配列に追加する
+        let viewContext = appDelegate.persistentContainer.viewContext
         
-        var myDefault = UserDefaults.standard
+        let diaryObject = NSEntityDescription.entity(forEntityName: "DIARY", in: viewContext)
         
-        myDefault.set(diaryList, forKey:"diaryList")
+        let newRecord = NSManagedObject(entity: diaryObject!, insertInto: viewContext)
         
-        myDefault.synchronize()
+        
+        //TODO:値の代入を追加する
+        newRecord.setValue(myTitle.text, forKey: "title")
+        newRecord.setValue(Date(), forKey:"saveDate")
+        newRecord.setValue(textToWrite, forKey:"content")
+        
+        
         
     }
     @IBAction func PickImage(_ sender: UIButton) {
