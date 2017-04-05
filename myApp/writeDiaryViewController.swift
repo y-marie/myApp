@@ -67,6 +67,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
             }
         }catch{
+
         }
 
 }

@@ -15,6 +15,8 @@ class showDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        read()
 
     }
 
@@ -47,9 +49,12 @@ class showDiaryViewController: UIViewController {
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
                 
-                var dic = diaryList as! NSDictionary
+                let dic = diaryList as! NSDictionary
                 
                 myTitle?.text = dic["title"] as! String
+              
+                read()
+                
             }
         }catch{
         }
