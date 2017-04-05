@@ -61,10 +61,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     
-//    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        print(#function)
-//    }
-    
     private func mapView(mapView: MKMapView,annotationView View: MKAnnotation,calloutAccessoryControlTapped control:UIControl){
         print(#function)
     }
@@ -75,6 +71,9 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
             
             performSegue(withIdentifier: "showDiaryView", sender: nil)
         }
+    }
+    @IBAction func tapToShow(_ sender: UIButton) {
+        
     }
     
     override func didReceiveMemoryWarning() {

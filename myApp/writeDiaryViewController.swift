@@ -14,13 +14,9 @@ import CoreData
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     @IBOutlet weak var textToWrite: UITextView!
-    
     @IBOutlet weak var myTitle: UITextField!
-    
     @IBOutlet weak var myDate: UITextField!
-    
     @IBOutlet weak var firstPic: UIImageView!
-    
     @IBOutlet weak var scPic: UIImageView!
     
     var diaryList = NSMutableArray()
@@ -31,6 +27,9 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         read()
   }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//
+//    }
     
     func read(){
         
@@ -85,11 +84,21 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         //TODO:値の代入を追加する
         newRecord.setValue(myTitle.text, forKey: "title")
         newRecord.setValue(Date(), forKey:"saveDate")
-        newRecord.setValue(textToWrite, forKey:"content")
+        newRecord.setValue(textToWrite.text, forKey:"content")
+        newRecord.setValue(firstPic.image, forKey: "image1")
+        newRecord.setValue(scPic.image, forKey: "image2")
         
-        
-        
-    }
+        do {
+            try viewContext.save()
+            
+            //再読み込み
+//            read()
+            
+        }catch{
+        }
+}
+    
+    
     @IBAction func PickImage(_ sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
