@@ -7,6 +7,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     
   @IBOutlet weak var map1: MKMapView!
 
+    var selectedName:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759)
@@ -21,15 +23,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         
         map1.addAnnotation(myPin)
         
-//        let reuseId = "pin"
-//        
-//        var pinView = map1.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-//        
-//        pinView?.canShowCallout = true
-//        
-//        let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
-//        pinView?.rightCalloutAccessoryView = rightButton as? UIView
-
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -72,9 +65,23 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
             performSegue(withIdentifier: "showDiaryView", sender: nil)
         }
     }
+    
     @IBAction func tapToShow(_ sender: UIButton) {
         
     }
+    @IBAction func tapToShow2(_ sender: UIButton) {
+    }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //次の遷移先の画面をインスタンス化して取得
+        let secondVC = segue.destination as! showDiaryViewController
+        
+//        secondVC.
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

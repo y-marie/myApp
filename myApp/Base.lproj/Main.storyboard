@@ -198,12 +198,20 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-vl-oME">
-                                <rect key="frame" x="219" y="92" width="30" height="30"/>
+                                <rect key="frame" x="217" y="92" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TAP"/>
+                                <state key="normal" title="TAP1"/>
                                 <connections>
                                     <action selector="tapToShow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="om0-up-GF8"/>
                                     <segue destination="85D-Dt-cy3" kind="push" id="70c-aq-3fK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-mB-4A9">
+                                <rect key="frame" x="153" y="364" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="TAP2"/>
+                                <connections>
+                                    <action selector="tapToShow2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ne9-eE-9G5"/>
                                 </connections>
                             </button>
                         </subviews>

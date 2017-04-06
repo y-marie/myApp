@@ -17,6 +17,13 @@ class showDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         read()
+        
+        let dic = diaryList[0] as! NSDictionary
+        myTitle?.text = dic["title"] as! String
+        
+//        let dic = diaryList[1] as! NSDictionary
+//        myTitle?.text = dic["title"] as! String
+
 
     }
 
@@ -48,13 +55,6 @@ class showDiaryViewController: UIViewController {
                 //("title:\(title) saveDate:\(saveDate)")
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
-                
-                let dic = diaryList as! NSDictionary
-                
-                myTitle?.text = dic["title"] as! String
-              
-                read()
-                
             }
         }catch{
         }
