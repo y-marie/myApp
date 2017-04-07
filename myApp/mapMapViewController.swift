@@ -5,6 +5,8 @@ import MapKit
 
 class mapMapViewController: UIViewController, MKMapViewDelegate {
     
+    var selectedIndex = -1
+    
   @IBOutlet weak var map1: MKMapView!
 
     var selectedName:String = ""
@@ -75,11 +77,18 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "taptap1" {
+            selectedIndex = 0
+        } else{
+            selectedIndex = 2
+        }
+        
         //次の遷移先の画面をインスタンス化して取得
         let secondVC = segue.destination as! showDiaryViewController
         
-//        secondVC.
-        
+        //次の遷移先の画面のプロパティに、選択された行番号を保存
+        secondVC.selectedNomber = selectedIndex
+    
     }
 
     

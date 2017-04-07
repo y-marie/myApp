@@ -13,17 +13,25 @@ class showDiaryViewController: UIViewController {
     
     var diaryList = NSMutableArray()
     
+    var selectedNomber:Int = -1
+    var scdiaryList:[Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        read()
+        print(selectedNomber)
         
-        let dic = diaryList[0] as! NSDictionary
+         read()
+        
+        let dic = diaryList[selectedNomber] as! NSDictionary
         myTitle?.text = dic["title"] as! String
+        
+        
+        print(diaryList)
         
 //        let dic = diaryList[1] as! NSDictionary
 //        myTitle?.text = dic["title"] as! String
-
+        
 
     }
 
@@ -34,6 +42,8 @@ class showDiaryViewController: UIViewController {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let viewContext = appDelegate.persistentContainer.viewContext
+        
+        let myRequest = NSEntityDescription.entity(forEntityName: "DIARY", in: viewContext)
         
         let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
         

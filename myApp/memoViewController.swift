@@ -14,13 +14,14 @@ class memoViewController: UIViewController {
         
          var myDefault = UserDefaults.standard
     
-        if (myDefault.object(forKey:"memoMemo") != nil){
-            memoMemo = NSMutableArray(array: myDefault.object(forKey:"memoMemo") as! NSMutableArray)
-        }
-        
-        var dic = memoMemo as! NSDictionary
-        
-        myMemoField?.text = dic["title"] as! String
+//        if (myDefault.object(forKey:"memoMemo") != nil){
+//            memoMemo = NSMutableArray(array: myDefault.object(forKey:"memoMemo") as! NSMutableArray)
+//        }
+//        
+//        var dic = memoMemo as! NSDictionary
+//        
+//        myMemoField?.text = dic["title"] as! String
+//
 
     }
 

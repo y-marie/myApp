@@ -144,6 +144,29 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         self.dismiss(animated: true)
         
     }
+    
+    //写真を選んだ後
+    func imagePicker(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let assetURL:AnyObject = info[UIImagePickerControllerReferenceURL]! as AnyObject
+        
+        let strURL:String = assetURL.description
+     
+        print(strURL)
+        
+        // ユーザーデフォルトを用意する
+        let myDefault = UserDefaults.standard
+        
+        // データを書き込んで
+        myDefault.set(strURL, forKey: "selectedPhotoURL")
+        
+        // 即反映させる
+        myDefault.synchronize()
+        
+        //閉じる処理
+        imagePicker.dismiss(animated: true, completion: nil)
+
+    }
 
     
     @IBAction func tapToClose(_ sender: UITextField) {

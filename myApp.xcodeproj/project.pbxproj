@@ -21,7 +21,6 @@
 		5F4A3E051E88F9DB005F26E5 /* memoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */; };
 		5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */; };
 		5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE657261E8CD4580090ACAC /* mapMapViewController.swift */; };
-		5FF1E67A1E94B71100799541 /* waterfall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1E6791E94B71100799541 /* waterfall.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoViewController.swift; sourceTree = "<group>"; };
 		5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showDiaryViewController.swift; sourceTree = "<group>"; };
 		5FE657261E8CD4580090ACAC /* mapMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapMapViewController.swift; sourceTree = "<group>"; };
-		5FF1E6791E94B71100799541 /* waterfall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = waterfall.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +113,6 @@
 		5F4A3DD11E88F424005F26E5 /* myApp */ = {
 			isa = PBXGroup;
 			children = (
-				5FF1E6791E94B71100799541 /* waterfall.jpg */,
 				5F4A3DD21E88F424005F26E5 /* AppDelegate.swift */,
 				5F4A3DD41E88F424005F26E5 /* ViewController.swift */,
 				5F4A3DD61E88F424005F26E5 /* Main.storyboard */,
@@ -259,7 +256,6 @@
 			files = (
 				5F4A3DDD1E88F424005F26E5 /* LaunchScreen.storyboard in Resources */,
 				5F4A3DDA1E88F424005F26E5 /* Assets.xcassets in Resources */,
-				5FF1E67A1E94B71100799541 /* waterfall.jpg in Resources */,
 				5F4A3DD81E88F424005F26E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
