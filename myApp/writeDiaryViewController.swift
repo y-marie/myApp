@@ -8,7 +8,7 @@
 
 import UIKit
 import Photos
-import MobileCoreServices
+//import MobileCoreServices
 import CoreData
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
@@ -17,7 +17,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var myTitle: UITextField!
     @IBOutlet weak var myDate: UITextField!
     @IBOutlet weak var firstPic: UIImageView!
-    @IBOutlet weak var scPic: UIImageView!
+
     
     var diaryList = NSMutableArray()
     var selectedDate = Date()
@@ -81,13 +81,17 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         let newRecord = NSManagedObject(entity: diaryObject!, insertInto: viewContext)
         
+        let myDefault = UserDefaults.standard
+        
+        let nikki = myDefault.string(forKey: "selectedPhotoURL")
+        
         
         //TODO:値の代入を追加する
         newRecord.setValue(myTitle.text, forKey: "title")
         newRecord.setValue(Date(), forKey:"saveDate")
         newRecord.setValue(textToWrite.text, forKey:"content")
-        newRecord.setValue(firstPic.image, forKey: "image1")
-        newRecord.setValue(scPic.image, forKey: "image2")
+        newRecord.setValue(nikki, forKey: "image1")
+        
         
         do {
             try viewContext.save()
@@ -116,6 +120,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 
          }
     }
+    
+    
     @IBAction func tapCamera(_ sender: UIButton) {
         
         let camera = UIImagePickerControllerSourceType.camera
@@ -141,34 +147,45 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
-        self.dismiss(animated: true)
-        
-    }
-    
-    //写真を選んだ後
-    func imagePicker(_ imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let assetURL:AnyObject = info[UIImagePickerControllerReferenceURL]! as AnyObject
         
         let strURL:String = assetURL.description
-     
+        
         print(strURL)
         
-        // ユーザーデフォルトを用意する
-        let myDefault = UserDefaults.standard
+        let result = PHAsset.fetchAssets(withALAssetURLs: [assetURL as! URL], options: nil)
         
-        // データを書き込んで
-        myDefault.set(strURL, forKey: "selectedPhotoURL")
+        let asset = result.firstObject
         
-        // 即反映させる
-        myDefault.synchronize()
-        
-        //閉じる処理
-        imagePicker.dismiss(animated: true, completion: nil)
+        // コンテンツ編集セッションを開始するためのアセットの要求
+        asset?.requestContentEditingInput(with: nil, completionHandler: { contentEditingInput, info in
+            // contentEditingInput = 編集用のアセットに関する情報を提供するコンテナ
+            let url = contentEditingInput?.fullSizeImageURL
+            // 対象アセットのURLからCIImageを生成
+            let inputImage = CIImage(contentsOf: url!)!
+            
+            let gps = inputImage.properties["{GPS}"]
+            
+            // ユーザーデフォルトを用意する
+            let myDefault = UserDefaults.standard
+            
+            // データを書き込んで
+            myDefault.set(strURL, forKey: "selectedPhotoURL")
+            
+            // 即反映させる
+            myDefault.synchronize()
+            
 
+        
+        self.dismiss(animated: true)
+            
+        })
+        
     }
-
     
+    
+   
     @IBAction func tapToClose(_ sender: UITextField) {
     }
    

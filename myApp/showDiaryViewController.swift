@@ -2,13 +2,13 @@
 
 import UIKit
 import CoreData
+import Photos
 
 class showDiaryViewController: UIViewController {
 
     @IBOutlet weak var myTitle: UITextField!
     @IBOutlet weak var myDate: UITextField!
     @IBOutlet weak var firstImage: UIImageView!
-    @IBOutlet weak var scImage: UIImageView!
     @IBOutlet weak var textToWrite: UITextView!
     
     var diaryList = NSMutableArray()
@@ -24,15 +24,28 @@ class showDiaryViewController: UIViewController {
          read()
         
         let dic = diaryList[selectedNomber] as! NSDictionary
+        
+        print(dic)
         myTitle?.text = dic["title"] as! String
         
+//      firstImage?.image = dic["image1"] as! String
+        
+        
+        let strURL =  dic["image1"] as! String
+        if strURL != nil{
+            
+            let url = URL(string: strURL as String!)
+            let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
+            let asset: PHAsset = (fetchResult.firstObject! as PHAsset)
+            let manager: PHImageManager = PHImageManager()
+                manager.requestImage(for: asset,targetSize: CGSize(width: 5, height: 500),contentMode: .aspectFill,options: nil) { (image, info) -> Void in
+                self.firstImage.image = image
+            }
+            
+        }
         
         print(diaryList)
         
-//        let dic = diaryList[1] as! NSDictionary
-//        myTitle?.text = dic["title"] as! String
-        
-
     }
 
     func read(){
@@ -60,7 +73,6 @@ class showDiaryViewController: UIViewController {
                 let image1: String? = result.value(forKey: "image1") as? String
                 let image2: String? = result.value(forKey: "image2") as? String
                 let date: Date? = result.value(forKey: "date") as? Date
-                
                 
                 //("title:\(title) saveDate:\(saveDate)")
                 

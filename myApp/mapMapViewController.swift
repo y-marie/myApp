@@ -80,7 +80,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         if segue.identifier == "taptap1" {
             selectedIndex = 0
         } else{
-            selectedIndex = 2
+            selectedIndex = 1
         }
         
         //次の遷移先の画面をインスタンス化して取得

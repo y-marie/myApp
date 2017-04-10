@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreData
+import Photos
+import MobileCoreServices
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UIImagePickerControllerDelegate{
 
     var window: UIWindow?
 
