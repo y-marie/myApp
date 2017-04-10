@@ -2,14 +2,17 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class mapMapViewController: UIViewController, MKMapViewDelegate {
     
+    var selectedName:String = ""
     var selectedIndex = -1
     
   @IBOutlet weak var map1: MKMapView!
 
-    var selectedName:String = ""
+    var diaryList = NSMutableArray()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,22 +21,53 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         let myPin = MKPointAnnotation()
         
         myPin.coordinate = coordinate
-        
         myPin.coordinate = coordinate
-        
         myPin.title = "ayala"
-        
         map1.addAnnotation(myPin)
+        
+//        read ()
         
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//    func read(){
+//        
+//        //配列初期化
+//        diaryList = NSMutableArray()
+//        
+//        //AppDelegateを使う準備をしておく
+//        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+//        
+//        //エンティティを操作するためのオブジェクトを作成
+//        let viewContext = appDelegate.persistentContainer.viewContext
+//        
+//        //どのエンティティからdataを取得してくるか設定
+//        let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
+//        
+//        do{
+//            //データを一括取得
+//            let fetchResults = try viewContext.fetch(query)
+//            
+//            //データの取得
+//            for result: AnyObject in fetchResults{
+//                
+//                let firstImage: String? = result.value(forKey: "firstImage") as? String
+//                
+//                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+//                
+//                print("firstImage:\(firstImage) saveDate:\(saveDate)")
+//                
+//                diaryList.add(["firstImage":firstImage, "saveDate":saveDate])
+//                
+//            }
+//        }catch{
+//        }
+//        
+//    }
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
         }
 
-    
-    
         let reuseId = "pin"
         var pinView = map1.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if pinView == nil {
@@ -74,7 +108,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func tapToShow2(_ sender: UIButton) {
     }
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "taptap1" {

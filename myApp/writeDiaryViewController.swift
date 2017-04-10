@@ -22,6 +22,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     var diaryList = NSMutableArray()
     var selectedDate = Date()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,6 +94,18 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         newRecord.setValue(nikki, forKey: "image1")
         
         
+        //firstPicにデータが入ってなかったら
+        if firstPic == nil {
+            
+            let alertController = UIAlertController(title: "写真を選択", message: "", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            present(alertController, animated: true, completion: nil)
+            
+        } else{
+        }
+
         do {
             try viewContext.save()
             
@@ -183,7 +196,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         })
         
     }
-    
     
    
     @IBAction func tapToClose(_ sender: UITextField) {
