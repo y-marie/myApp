@@ -3,6 +3,7 @@
 import UIKit
 import MapKit
 import CoreData
+import Photos
 
 class mapMapViewController: UIViewController, MKMapViewDelegate {
     
@@ -25,44 +26,74 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         myPin.title = "ayala"
         map1.addAnnotation(myPin)
         
-//        read ()
+        read()
         
     }
     
-//    func read(){
-//        
-//        //配列初期化
-//        diaryList = NSMutableArray()
-//        
-//        //AppDelegateを使う準備をしておく
-//        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-//        
-//        //エンティティを操作するためのオブジェクトを作成
-//        let viewContext = appDelegate.persistentContainer.viewContext
-//        
-//        //どのエンティティからdataを取得してくるか設定
-//        let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
-//        
-//        do{
-//            //データを一括取得
-//            let fetchResults = try viewContext.fetch(query)
-//            
-//            //データの取得
-//            for result: AnyObject in fetchResults{
-//                
-//                let firstImage: String? = result.value(forKey: "firstImage") as? String
-//                
-//                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-//                
-//                print("firstImage:\(firstImage) saveDate:\(saveDate)")
-//                
-//                diaryList.add(["firstImage":firstImage, "saveDate":saveDate])
-//                
-//            }
-//        }catch{
-//        }
-//        
-//    }
+    func read(){
+        
+        //配列初期化
+        diaryList = NSMutableArray()
+        
+        //AppDelegateを使う準備をしておく
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //エンティティを操作するためのオブジェクトを作成
+        let viewContext = appDelegate.persistentContainer.viewContext
+        
+        //どのエンティティからdataを取得してくるか設定
+        let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
+        
+        do{
+            //データを一括取得
+            let fetchResults = try viewContext.fetch(query)
+            
+            //データの取得
+            for result: AnyObject in fetchResults{
+                
+                let image1: String? = result.value(forKey: "image1") as? String
+                
+                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+                
+                let title: String? = result.value(forKey: "title") as? String
+                
+                //imageから位置情報をとりだす
+                
+                
+                let url = URL(string: image1 as String!)
+                let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
+                
+                let asset = fetchResult.firstObject
+                
+                // コンテンツ編集セッションを開始するためのアセットの要求
+                asset?.requestContentEditingInput(with: nil, completionHandler: { contentEditingInput, info in
+                    // contentEditingInput = 編集用のアセットに関する情報を提供するコンテナ
+                    let url = contentEditingInput?.fullSizeImageURL
+                    // 対象アセットのURLからCIImageを生成
+                    let inputImage = CIImage(contentsOf: url!)!
+                    
+                    let gps = inputImage.properties["{GPS}"]
+                    
+                    print(gps)
+                    
+
+                
+                
+                //let longitude: = result.value(forKey:"") as?
+                
+                //let latidute:  = result.value(forKey: "") as?
+                
+                print("image1:\(image1) saveDate:\(saveDate) title:\(title)")
+                
+                self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title])
+                    
+                    })
+                
+            }
+        }catch{
+        }
+        
+    }
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil

@@ -18,10 +18,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var myDate: UITextField!
     @IBOutlet weak var firstPic: UIImageView!
 
-    
     var diaryList = NSMutableArray()
     var selectedDate = Date()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +60,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 
                 let date: Date? = result.value(forKey: "date") as? Date
                 
-                
                 //("title:\(title) saveDate:\(saveDate)")
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
@@ -73,6 +70,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 
 }
     @IBAction func tapToSave(_ sender: UIButton) {
+        
         
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -93,9 +91,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         newRecord.setValue(textToWrite.text, forKey:"content")
         newRecord.setValue(nikki, forKey: "image1")
         
-        
         //firstPicにデータが入ってなかったら
-        if firstPic == nil {
+        if "image1" == nil {
             
             let alertController = UIAlertController(title: "写真を選択", message: "", preferredStyle: .alert)
             
@@ -106,6 +103,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         } else{
         }
 
+        
         do {
             try viewContext.save()
             
