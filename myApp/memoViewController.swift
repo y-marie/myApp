@@ -33,6 +33,11 @@ class memoViewController: UIViewController {
         
         myDefault.synchronize()
         
+    //これはここでいいのか？
+        var dic = memoMemo as! NSDictionary
+        
+      myMemoField?.text = dic["memoMemo"] as! String
+        
     }
     
 

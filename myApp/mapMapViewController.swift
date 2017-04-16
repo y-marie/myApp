@@ -4,6 +4,7 @@ import UIKit
 import MapKit
 import CoreData
 import Photos
+import Darwin
 
 class mapMapViewController: UIViewController, MKMapViewDelegate {
     
@@ -17,6 +18,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759)
         
         let myPin = MKPointAnnotation()
@@ -27,6 +29,41 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         map1.addAnnotation(myPin)
         
         read()
+        
+        
+        for diary in diaryList {
+            
+            var dic:NSDictionary = diary as! NSDictionary
+            
+            let latitude:NSString = dic["Latitude"] as! NSString
+            
+            let longitude:NSString = dic["Longitude"] as! NSString
+            
+            print(latitude)
+            print(longitude)
+            
+//            let latitudef:Float = Float(dic["Latitude"])
+            
+            let latitudef:Float = latitude.floatValue
+            
+            let longitudef:Float = longitude.floatValue
+            
+            print(latitudef)
+            print(longitudef)
+            
+            //atof数字にする
+            
+            if latitudef != nil {
+                //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
+                let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
+                let myPin = MKPointAnnotation()
+                
+                myPin.coordinate = coordinate
+                myPin.coordinate = coordinate
+                myPin.title = "ayala"
+                map1.addAnnotation(myPin)
+        }
+        }
         
     }
     
@@ -61,31 +98,63 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                 
                 
                 let url = URL(string: image1 as String!)
+                
                 let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
                 
                 let asset = fetchResult.firstObject
                 
                 // コンテンツ編集セッションを開始するためのアセットの要求
                 asset?.requestContentEditingInput(with: nil, completionHandler: { contentEditingInput, info in
+                    
                     // contentEditingInput = 編集用のアセットに関する情報を提供するコンテナ
                     let url = contentEditingInput?.fullSizeImageURL
+                    
                     // 対象アセットのURLからCIImageを生成
                     let inputImage = CIImage(contentsOf: url!)!
                     
-                    let gps = inputImage.properties["{GPS}"]
+                    let gps:NSDictionary = inputImage.properties["{GPS}"] as! NSDictionary
                     
                     print(gps)
                     
+                    let latitude:String! = String(describing: gps["Latitude"]!)
+                
+                    let longitude:String! = String(describing: gps["Longitude"]!)
+                
+       
+                    
+        print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)")
+                    
+        
+                    self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title,"longitude":longitude,"latitude":latitude])
+                    
+                    
+                    print(latitude)
+                    print(longitude)
+                    
+                    //            let latitudef:Float = Float(dic["Latitude"])
+                    
+                    let latitudef:Double = atof(latitude)
+                    
+                    let longitudef:Double = atof(longitude)
+                    
+//                    print(latitudef)
+                    print(longitudef)
+                    
+                    //atof数字にする
+                    
+                    if latitudef != nil {
+                        //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
+                        
+                        let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
+                        
+                        let myPin = MKPointAnnotation()
+                        
+                        myPin.coordinate = coordinate
+                        myPin.coordinate = coordinate
+                        myPin.title = "ayala"
+                        self.map1.addAnnotation(myPin)
+                    }
 
-                
-                
-                //let longitude: = result.value(forKey:"") as?
-                
-                //let latidute:  = result.value(forKey: "") as?
-                
-                print("image1:\(image1) saveDate:\(saveDate) title:\(title)")
-                
-                self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title])
                     
                     })
                 
@@ -100,12 +169,15 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         }
 
         let reuseId = "pin"
+        
         var pinView = map1.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
+        
+            if pinView == nil {
             
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
 //            pinView?.animatesDrop = true
+            
             let calloutButton = UIButton(type: .detailDisclosure)
             pinView!.rightCalloutAccessoryView = calloutButton
             pinView!.sizeToFit()
@@ -113,7 +185,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         else {
             pinView?.annotation = annotation
         }
-//        let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
+//        let rightButton: AnyObject! = UIButton(type:)
 //        
 //        pinView?.rightCalloutAccessoryView = rightButton as? UIView
         
@@ -126,6 +198,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
         if control == view.rightCalloutAccessoryView {
             //print("button tapped")
             
@@ -154,13 +227,10 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         secondVC.selectedNomber = selectedIndex
     
     }
-
     
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-    
-
     
 }

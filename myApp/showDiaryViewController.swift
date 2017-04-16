@@ -8,6 +8,7 @@ class showDiaryViewController: UIViewController {
 
     @IBOutlet weak var myTitle: UITextField!
     @IBOutlet weak var myDate: UITextField!
+    @IBOutlet weak var myDate2: UITextField!
     @IBOutlet weak var firstImage: UIImageView!
     @IBOutlet weak var textToWrite: UITextView!
     
@@ -28,8 +29,11 @@ class showDiaryViewController: UIViewController {
         print(dic)
         myTitle?.text = dic["title"] as! String
         
-//      firstImage?.image = dic["image1"] as! String
-        
+   //辞書から引っ張るコード
+   //date分割しちゃったけど...
+        //  myDate?.text = dic[""] as! String
+   
+        textToWrite?.text = dic["date"] as! String
         
         let strURL =  dic["image1"] as! String
         if strURL != nil{
