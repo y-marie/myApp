@@ -112,9 +112,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                     // 対象アセットのURLからCIImageを生成
                     let inputImage = CIImage(contentsOf: url!)!
                     
+                    if inputImage.properties["{GPS}"] != nil{
+                    
                     let gps:NSDictionary = inputImage.properties["{GPS}"] as! NSDictionary
                     
                     print(gps)
+                
                     
                     let latitude:String! = String(describing: gps["Latitude"]!)
                 
@@ -154,7 +157,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                         myPin.title = "ayala"
                         self.map1.addAnnotation(myPin)
                     }
-
+                }
                     
                     })
                 
@@ -190,6 +193,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
 //        pinView?.rightCalloutAccessoryView = rightButton as? UIView
         
         return pinView
+        
     }
 
     
