@@ -28,13 +28,14 @@ class showDiaryViewController: UIViewController {
         let dic = diaryList[selectedNomber] as! NSDictionary
         
         print(dic)
+        
         myTitle?.text = dic["title"] as! String
         
    //辞書から引っ張るコード
    //date分割しちゃったけど...
         //  myDate?.text = dic[""] as! String
    
-        textToWrite?.text = dic["date"] as! String
+        textToWrite?.text = dic["content"] as! String
         
         let strURL =  dic["image1"] as! String
         if strURL != nil{

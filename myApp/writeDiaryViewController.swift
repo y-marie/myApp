@@ -79,11 +79,9 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 
                 let image1: String? = result.value(forKey: "image1") as? String
                 
-//                let image2: String? = result.value(forKey: "image2") as? String
-                
                 let date: Date? = result.value(forKey: "date") as? Date
                 
-                //("title:\(title) saveDate:\(saveDate)")
+               print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)")
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"date":date,"content":content])
             }
