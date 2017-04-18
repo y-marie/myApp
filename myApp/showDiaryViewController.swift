@@ -15,6 +15,7 @@ class showDiaryViewController: UIViewController {
     var diaryList = NSMutableArray()
     
     var selectedNomber:Int = -1
+    var scSelectedIndex = -1
     var scdiaryList:[Int] = []
     
     override func viewDidLoad() {

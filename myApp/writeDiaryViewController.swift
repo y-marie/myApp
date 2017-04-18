@@ -27,7 +27,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     
     let diaryDatePicker:UIDatePicker = UIDatePicker(frame: CGRect(x: 10, y:20, width:300, height:220))
     
-    
+    let controller = UIImagePickerController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,7 +123,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             present(alertController, animated: true, completion: nil)
             
-        } else{
+                    } else{
         }
 
         
@@ -133,7 +134,13 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 //            read()
             
         }catch{
+            
+            //例外を書く
+            //errorの時とか
         }
+        
+        self.dismiss(animated: true)
+        
 }
     
     
@@ -142,7 +149,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             
             //写真ライブラリ(カメラロール)表示用のViewControllerを宣言
-            let controller = UIImagePickerController()
             
             controller.delegate = self
             
@@ -225,7 +231,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             // 即反映
             myDefault.synchronize()
             
-            self.dismiss(animated: true)
+            self.controller.dismiss(animated: true)
+            
             
         })
         
