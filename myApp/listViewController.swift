@@ -52,12 +52,20 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 
                 let title: String? = result.value(forKey: "title") as? String
                 
-                print("title:\(title)")
+                let image1: String? = result.value(forKey: "image1") as? String
                 
-                diaryList.add(["title":title])
+                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+                
+                let content: String? = result.value(forKey: "content") as? String
+                
+                print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)")
+            
+                //   ,":\()"    for copy
+                diaryList.add(["title":title,"saveDate":saveDate,"image1":image1,"content":content])
             }
         }catch{
         }
+        
        myTableView.reloadData()
         
     }
@@ -117,8 +125,6 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
 
     @IBAction func tapToAdd(_ sender: UIButton) {
-        
-       
     }
 
     override func didReceiveMemoryWarning() {
