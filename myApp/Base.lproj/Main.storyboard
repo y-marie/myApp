@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="1734.375" y="-313.73239436619718"/>
         </scene>
-        <!--Write Diary View Controller-->
+        <!--新規追加-->
         <scene sceneID="qtr-RU-0VW">
             <objects>
                 <viewController id="2yK-u6-M11" customClass="writeDiaryViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9Q-Du-GJT">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9Q-Du-GJT">
                                 <rect key="frame" x="16" y="331" width="288" height="148"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -98,13 +98,6 @@
                                     <outlet property="delegate" destination="2yK-u6-M11" id="aek-5J-4XU"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxW-Np-baz">
-                                <rect key="frame" x="145" y="481" width="31" height="30"/>
-                                <state key="normal" title="保存"/>
-                                <connections>
-                                    <action selector="tapToSave:" destination="2yK-u6-M11" eventType="touchUpInside" id="bd5-Md-eEy"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX2-RW-uiO">
                                 <rect key="frame" x="44" y="148" width="77" height="30"/>
                                 <state key="normal" title="写真を選択"/>
@@ -157,7 +150,7 @@
                                     <outlet property="delegate" destination="2yK-u6-M11" id="Tde-eY-v8d"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-GZ-evJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-GZ-evJ">
                                 <rect key="frame" x="16" y="186" width="288" height="137"/>
                             </imageView>
                         </subviews>
@@ -168,8 +161,6 @@
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="centerX" secondItem="H7K-dP-kk0" secondAttribute="centerX" id="E9y-ME-ccW"/>
                             <constraint firstItem="H7K-dP-kk0" firstAttribute="centerY" secondItem="qFn-vn-qDD" secondAttribute="centerY" id="EII-JV-htC"/>
                             <constraint firstItem="lX2-RW-uiO" firstAttribute="baseline" secondItem="tr0-gz-PIf" secondAttribute="baseline" id="G8c-fu-7ec"/>
-                            <constraint firstItem="LxW-Np-baz" firstAttribute="top" secondItem="d9Q-Du-GJT" secondAttribute="bottom" constant="2" id="HqR-hN-VB9"/>
-                            <constraint firstItem="d9Q-Du-GJT" firstAttribute="centerX" secondItem="LxW-Np-baz" secondAttribute="centerX" id="KOr-1I-QWw"/>
                             <constraint firstItem="zcj-GZ-evJ" firstAttribute="top" secondItem="tr0-gz-PIf" secondAttribute="bottom" constant="8" id="KaR-4V-cIi"/>
                             <constraint firstItem="lX2-RW-uiO" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" constant="28" id="LWi-ID-bqQ"/>
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="top" secondItem="MnD-cZ-8do" secondAttribute="bottom" constant="8" symbolic="YES" id="Lw7-Xo-uNP"/>
@@ -186,7 +177,6 @@
                             <constraint firstItem="d9Q-Du-GJT" firstAttribute="top" secondItem="zcj-GZ-evJ" secondAttribute="bottom" constant="8" id="bXD-IP-Bhk"/>
                             <constraint firstItem="zcj-GZ-evJ" firstAttribute="trailing" secondItem="d9Q-Du-GJT" secondAttribute="trailing" id="cQQ-gE-po4"/>
                             <constraint firstItem="qFn-vn-qDD" firstAttribute="leading" secondItem="H7K-dP-kk0" secondAttribute="trailing" constant="40" id="fKR-82-aRW"/>
-                            <constraint firstItem="VpS-Gv-hUQ" firstAttribute="top" secondItem="LxW-Np-baz" secondAttribute="bottom" constant="8" symbolic="YES" id="hKp-PT-rAq"/>
                             <constraint firstItem="2l7-zg-DIL" firstAttribute="leading" secondItem="qFn-vn-qDD" secondAttribute="trailing" constant="2" id="k9o-7W-h6B"/>
                             <constraint firstItem="qFn-vn-qDD" firstAttribute="top" secondItem="JsF-Th-cYi" secondAttribute="bottom" constant="13" id="l0F-ND-UP6"/>
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" constant="3" id="lao-fT-zh9"/>
@@ -198,6 +188,18 @@
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="centerY" secondItem="JsF-Th-cYi" secondAttribute="centerY" id="zuv-dl-I3i"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="新規追加" id="hgi-a5-OYq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Tea-4c-3hZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LxW-Np-baz">
+                                <rect key="frame" x="273" y="7" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="保存"/>
+                                <connections>
+                                    <action selector="tapToSave:" destination="2yK-u6-M11" eventType="touchUpInside" id="bd5-Md-eEy"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="firstPic" destination="zcj-GZ-evJ" id="zVj-wz-yA0"/>
                         <outlet property="myDate" destination="qFn-vn-qDD" id="CRR-d3-MZM"/>
@@ -424,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBh-q4-MJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4335" y="-210"/>
+            <point key="canvasLocation" x="4734" y="-213"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i9d-Z7-Y35">

@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Yuki Mitsudome. All rights reserved.
 //
 
+//memoから引っ張る昨日
+
 import UIKit
 import Photos
 //import MobileCoreServices
@@ -79,11 +81,16 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 
                 let image1: String? = result.value(forKey: "image1") as? String
                 
-                let date: Date? = result.value(forKey: "date") as? Date
+                let startDate: Date? = result.value(forKey: "startDate") as? Date
                 
-               print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)")
+                let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
-                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"date":date,"content":content])
+                
+               print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
+                
+                // ,":\()"  for copy
+                
+                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"startDate":startDate,"content":content,"endDate":endDate])
             }
         }catch{
 

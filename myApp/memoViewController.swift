@@ -15,7 +15,9 @@ class memoViewController: UIViewController {
          var myDefault = UserDefaults.standard
         
         if (myDefault.object(forKey:"memoMemo") != nil){
-            memoMemo = NSMutableArray(array: myDefault.object(forKey:"memoMemo") as! NSMutableArray)
+           
+            
+            myMemoField.text = myDefault.object(forKey:"memoMemo") as! String
         }
         print(memoMemo)
     }
@@ -29,14 +31,9 @@ class memoViewController: UIViewController {
         var myDefault = UserDefaults.standard
       
         //配列を丸ごとUserDefaultに書き込み
-        myDefault.set(memoMemo,forKey:"memoMemo")
+        myDefault.set(myMemoField.text,forKey:"memoMemo")
         
         myDefault.synchronize()
-        
-    //これはここでいいのか？
-        var dic = memoMemo as! NSDictionary
-        
-      myMemoField?.text = dic["memoMemo"] as! String
         
     }
     

@@ -73,15 +73,22 @@ class showDiaryViewController: UIViewController {
             for result: AnyObject in fetchResults{
                 
                 let title: String? = result.value(forKey: "title") as? String
+                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+                
                 let content: String? = result.value(forKey:"content") as? String
+                
                 let image1: String? = result.value(forKey: "image1") as? String
+                
                 //let image2: String? = result.value(forKey: "image2") as? String
-                let date: Date? = result.value(forKey: "date") as? Date
+                
+                let startDate: Date? = result.value(forKey: "startDate") as? Date
+                
+                let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
                 //("title:\(title) saveDate:\(saveDate)")
                 
-                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"date":date,"content":content])
+                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
             }
         }catch{
         }

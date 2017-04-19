@@ -31,40 +31,40 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         read()
         
         
-        for diary in diaryList {
-            
-            var dic:NSDictionary = diary as! NSDictionary
-            
-            let latitude:NSString = dic["Latitude"] as! NSString
-            
-            let longitude:NSString = dic["Longitude"] as! NSString
-            
-            print(latitude)
-            print(longitude)
-            
-//            let latitudef:Float = Float(dic["Latitude"])
-            
-            let latitudef:Float = latitude.floatValue
-            
-            let longitudef:Float = longitude.floatValue
-            
-            print(latitudef)
-            print(longitudef)
-            
-            //atof数字にする
-            
-            if latitudef != nil {
-                //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
-                let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
-                let myPin = MKPointAnnotation()
-                
-                myPin.coordinate = coordinate
-                myPin.coordinate = coordinate
-                myPin.title = "ayala"
-                map1.addAnnotation(myPin)
-        }
-        }
-        
+//        for diary in diaryList {
+//            
+//            var dic:NSDictionary = diary as! NSDictionary
+//            
+//            let latitude:NSString = dic["Latitude"] as! NSString
+//            
+//            let longitude:NSString = dic["Longitude"] as! NSString
+//            
+//            print(latitude)
+//            print(longitude)
+//            
+////            let latitudef:Float = Float(dic["Latitude"])
+//            
+//            let latitudef:Float = latitude.floatValue
+//            
+//            let longitudef:Float = longitude.floatValue
+//            
+//            print(latitudef)
+//            print(longitudef)
+//            
+//            //atof数字にする
+//            
+//            if latitudef != nil {
+//                //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
+//                let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
+//                let myPin = MKPointAnnotation()
+//                
+//                myPin.coordinate = coordinate
+//                myPin.coordinate = coordinate
+//                myPin.title = "ayala"
+//                map1.addAnnotation(myPin)
+//        }
+//        }
+//        
     }
     
     func read(){
@@ -86,6 +86,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
             let fetchResults = try viewContext.fetch(query)
             
             //データの取得
+            var i = 0
+            
             for result: AnyObject in fetchResults{
                 
                 let image1: String? = result.value(forKey: "image1") as? String
@@ -94,6 +96,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                 
                 let title: String? = result.value(forKey: "title") as? String
                 
+                let startDate: Date? = result.value(forKey: "startDate") as? Date
+                
+                let endDate: Date? = result.value(forKey: "endDate") as? Date
+                
+                let content: String? = result.value(forKey:"content") as? String
+
                 //imageから位置情報をとりだす
                 
                 
@@ -125,10 +133,10 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                 
        
                     
-        print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)")
+        print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
                     
         
-                    self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title,"longitude":longitude,"latitude":latitude])
+                    self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title,"longitude":longitude,"latitude":latitude,"startDate":startDate,"content":content,"endDate":endDate])
                     
                     
                     print(latitude)
@@ -155,8 +163,14 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                         myPin.coordinate = coordinate
                         myPin.coordinate = coordinate
                         myPin.title = "ayala"
+                        myPin.setValue(i, forKey: "tag")
+                        
                         self.map1.addAnnotation(myPin)
-                    }
+                    
+                        
+                  i = i + 1
+                        
+                        }
                 }
                     
                     })
@@ -180,6 +194,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
 //            pinView?.animatesDrop = true
+                print(pinView?.value(forKey: "tag"))
             
             let calloutButton = UIButton(type: .detailDisclosure)
             pinView!.rightCalloutAccessoryView = calloutButton
@@ -204,7 +219,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
-            //print("button tapped")
+            print("button tapped")
             
             performSegue(withIdentifier: "showDiaryView", sender: nil)
         }
