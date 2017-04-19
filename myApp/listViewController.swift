@@ -110,7 +110,7 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         let secondVC = segue.destination as! showDiaryViewController
         
         //次の遷移先の画面のプロパティに、選択された行番号を保存
-        secondVC.scSelectedIndex = selectedIndex
+        secondVC.selectedNomber = selectedIndex
         
         }else{
             

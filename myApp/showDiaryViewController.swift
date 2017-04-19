@@ -15,7 +15,6 @@ class showDiaryViewController: UIViewController {
     var diaryList = NSMutableArray()
     
     var selectedNomber:Int = -1
-    var scSelectedIndex = -1
     var scdiaryList:[Int] = []
     
     override func viewDidLoad() {
@@ -77,15 +76,18 @@ class showDiaryViewController: UIViewController {
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
                 let content: String? = result.value(forKey:"content") as? String
                 let image1: String? = result.value(forKey: "image1") as? String
-                let image2: String? = result.value(forKey: "image2") as? String
+                //let image2: String? = result.value(forKey: "image2") as? String
                 let date: Date? = result.value(forKey: "date") as? Date
                 
                 //("title:\(title) saveDate:\(saveDate)")
                 
-                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"image2":image2,"date":date,"content":content])
+                diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"date":date,"content":content])
             }
         }catch{
         }
+    }
+    
+    @IBAction func tapToBack(_ sender: UIButton) {
     }
     
     override func didReceiveMemoryWarning() {
