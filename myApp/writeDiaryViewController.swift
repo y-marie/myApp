@@ -61,7 +61,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         //イベントの追加
         //TODO:後ほど
-        closeBtnDP.addTarget(self, action: #selector(showDateSelected(sender:)), for: .touchUpInside)
+        closeBtnDP.addTarget(self, action: #selector(closeDatePicker(sender:)), for: .touchUpInside)
         
         //baseViewにcloseBtnDPを配置
         baseView.addSubview(closeBtnDP)
@@ -89,6 +89,11 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         print(textField.tag)
         
+        myTitle.resignFirstResponder()
+        myDate.resignFirstResponder()
+        myDate2.resignFirstResponder()
+        
+        
         switch textField.tag{
             
         case 1:
@@ -99,13 +104,19 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         case 2:
             //日付のtextfield
             //baseViewの表示
+            diaryDatePicker.tag = textField.tag
+            
             UIView.animate(withDuration: 0.5, animations: {() -> Void in
                 
                 self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
                 
             })
+            return false
             
         case 3:
+            
+            diaryDatePicker.tag = textField.tag
+            
             UIView.animate(withDuration: 0.5, animations: {() -> Void in
                 
                 self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
@@ -114,8 +125,12 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
             //キーボードを出さないようにする
             return false
+            
+            
+            
         default:
             return true
+            
             
         }
         return true
@@ -134,7 +149,15 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         let strSelectedDate =  df.string(from: sender.date)
         
         //TextFieldに値を表示
-        myDate.text = strSelectedDate
+        
+        if diaryDatePicker.tag == 2 {
+        
+             myDate.text = strSelectedDate
+            
+        }else{
+            
+             myDate2.text = strSelectedDate
+            }
         
     }
     
@@ -209,8 +232,11 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         //TODO:値の代入を追加する
         newRecord.setValue(myTitle.text, forKey: "title")
+        
         newRecord.setValue(Date(), forKey:"saveDate")
+        
         newRecord.setValue(textToWrite.text, forKey:"content")
+        
         newRecord.setValue(nikki, forKey: "image1")
         
         //firstPicにデータが入ってなかったら
@@ -348,8 +374,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             textToWrite?.text = myDefault.object(forKey:"memoMemo") as! String
         }
-        
-    
        
     }
     
