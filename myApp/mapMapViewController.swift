@@ -163,7 +163,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                         myPin.coordinate = coordinate
                         myPin.coordinate = coordinate
                         myPin.title = "ayala"
-                        myPin.setValue(i, forKey: "tag")
+                
                         
                         self.map1.addAnnotation(myPin)
                     
@@ -228,8 +228,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func tapToShow(_ sender: UIButton) {
         
     }
-    @IBAction func tapToShow2(_ sender: UIButton) {
-    }
+   
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

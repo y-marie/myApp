@@ -29,15 +29,42 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     
     let diaryDatePicker:UIDatePicker = UIDatePicker(frame: CGRect(x: 10, y:20, width:300, height:220))
     
+    //datePicker隠すためのボタン
+    let closeBtnDP:UIButton = UIButton(type: .system)
+    
     let controller = UIImagePickerController()
+    
+     var memoMemo = NSMutableArray()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         read()
         
+        //datePickerのmodeを日付のみに設定
+        diaryDatePicker.datePickerMode = UIDatePickerMode.date
+        
+        //datePIckerの日付が選択された時に発動するイベントを追加
+        //順番は後
+        diaryDatePicker.addTarget(self, action: #selector(showDateSelected(sender:)), for: .valueChanged)
+        //#順番を指定できる
+        
         //baseViewにdatePickerを配置
         baseView.addSubview(diaryDatePicker)
+        
+        //closeBtnDPを配置
+        //位置、大きさを決定
+        closeBtnDP.frame = CGRect(x: self.view.frame.width - 60, y:  0, width:  50, height: 20)
+        
+        //タイトルの設定
+        closeBtnDP.setTitle("Close", for: .normal)
+        
+        //イベントの追加
+        //TODO:後ほど
+        closeBtnDP.addTarget(self, action: #selector(showDateSelected(sender:)), for: .touchUpInside)
+        
+        //baseViewにcloseBtnDPを配置
+        baseView.addSubview(closeBtnDP)
         
         //baseViewを下にぴったり配置、横幅ぴったりの大きさにしておく
         baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
@@ -54,6 +81,73 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 //    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 //
 //    }
+    
+    //テキストフィールド入力開始
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        print("textFieldShouldBeginEditing")
+        
+        print(textField.tag)
+        
+        switch textField.tag{
+            
+        case 1:
+            //タイトルのtextfield
+            //キーボードを表示する(通常表示)
+            return true
+            
+        case 2:
+            //日付のtextfield
+            //baseViewの表示
+            UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                
+                self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
+                
+            })
+            
+        case 3:
+            UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                
+                self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
+                
+        })
+        
+            //キーボードを出さないようにする
+            return false
+        default:
+            return true
+            
+        }
+        return true
+        
+    }
+    
+    //DatePickerで選択してる日付を変えた時、日付のTextFieldに値を表示
+    func showDateSelected(sender:UIDatePicker){
+        
+        //フォーマットを設定
+        let df = DateFormatter()
+        df.dateFormat = "yyyy/MM/dd"
+        //"yyyy-MM-dd" also ok
+        
+        //日付を文字列に変換
+        let strSelectedDate =  df.string(from: sender.date)
+        
+        //TextFieldに値を表示
+        myDate.text = strSelectedDate
+        
+    }
+    
+    //DatePickerが乗ったviewを隠す
+    func closeDatePicker(sender:UIButton){
+        UIView.animate(withDuration: 0.5, animations: {()
+            -> Void in self.baseView.frame.origin = CGPoint(x: 0, y: self.view.bounds.height)
+            
+            
+        })
+        
+    }
+
     
     func read(){
         
@@ -243,46 +337,22 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
     }
     
-    //テキストフィールド入力開始
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    @IBAction func tapToInsert(_ sender: UIButton) {
         
-        print("textFieldShouldBeginEditing")
+        //UserDefaultから保存した配列を取り出す
+        //UserDefaultを用意
+        var myDefault = UserDefaults.standard
         
-        print(textField.tag)
-        
-        switch textField.tag{
-        
-        case 1:
-            //タイトルのtextfield
-            //キーボードを表示する(通常表示)
-            return true
+        //名前を指定してデータを取得（配列に代入）
+        if (myDefault.object(forKey:"memoMemo") != nil){
             
-        case 2:
-            //日付のtextfield
-            //baseViewの表示
-            UIView.animate(withDuration: 0.5, animations: {() -> Void in
-                
-                self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
-            
-            })
-            
-        case 3:
-            UIView.animate(withDuration: 0.5, animations: {() -> Void in
-                
-          self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
-               
-            })
-                
-            //キーボードを出さないようにする
-            return false
-        default:
-            return true
-            
-            }
-         return true
-        
+            textToWrite?.text = myDefault.object(forKey:"memoMemo") as! String
         }
-   
+        
+    
+       
+    }
+    
     @IBAction func tapToClose(_ sender: UITextField) {
     }
    

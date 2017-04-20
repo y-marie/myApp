@@ -30,8 +30,7 @@ class showDiaryViewController: UIViewController {
         
         myTitle?.text = dic["title"] as! String
         
-   //辞書から引っ張るコード
-   //date分割しちゃったけど...
+
         //  myDate?.text = dic[""] as! String
    
         textToWrite?.text = dic["content"] as! String
