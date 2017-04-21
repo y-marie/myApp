@@ -19,14 +19,19 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759)
+        self.map1.delegate = self
         
-        let myPin = MKPointAnnotation()
+        // mapViewの中心を現在地にする
+        map1.setCenter(map1.userLocation.coordinate, animated: true)
         
-        myPin.coordinate = coordinate
-        myPin.coordinate = coordinate
-        myPin.title = "ayala"
-        map1.addAnnotation(myPin)
+//        let coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759)
+//        
+//        let myPin = MKPointAnnotation()
+//        
+//        myPin.coordinate = coordinate
+//        myPin.coordinate = coordinate
+//        myPin.title = "ayala"
+//        map1.addAnnotation(myPin)
         
         read()
         
@@ -158,11 +163,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                         
                         let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
                         
-                        let myPin = MKPointAnnotation()
+                        let myPin = CustomAnnotation()
                         
                         myPin.coordinate = coordinate
                         myPin.coordinate = coordinate
-                        myPin.title = "ayala"
+                        myPin.title = "a"
+                        myPin.tag = i
                 
                         
                         self.map1.addAnnotation(myPin)
@@ -197,6 +203,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                 print(pinView?.value(forKey: "tag"))
             
             let calloutButton = UIButton(type: .detailDisclosure)
+                
+             let custompin = annotation as! CustomAnnotation
+                
+                calloutButton.tag  = custompin.tag
+                
+                
             pinView!.rightCalloutAccessoryView = calloutButton
             pinView!.sizeToFit()
         }
@@ -220,16 +232,15 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         
         if control == view.rightCalloutAccessoryView {
             print("button tapped")
+        
+            var tag = (control as! UIButton).tag
+            
+            print(tag)
             
             performSegue(withIdentifier: "showDiaryView", sender: nil)
         }
     }
     
-    @IBAction func tapToShow(_ sender: UIButton) {
-        
-    }
-   
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "taptap1" {

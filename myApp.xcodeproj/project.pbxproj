@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F065FF81EA9CF3800DBBADF /* customPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F065FF71EA9CF3800DBBADF /* customPin.swift */; };
 		5F0874A51E93700E0027A0D6 /* myApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F0874A31E93700E0027A0D6 /* myApp.xcdatamodeld */; };
 		5F0C2FA91EA4946A005E017D /* listViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C2FA81EA4946A005E017D /* listViewController.swift */; };
 		5F18080D1EA73A9C008A8380 /* DIARY+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F18080B1EA73A9C008A8380 /* DIARY+CoreDataClass.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F065FF71EA9CF3800DBBADF /* customPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customPin.swift; sourceTree = "<group>"; };
 		5F0874A41E93700E0027A0D6 /* myApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myApp.xcdatamodel; sourceTree = "<group>"; };
 		5F0C2FA81EA4946A005E017D /* listViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listViewController.swift; sourceTree = "<group>"; };
 		5F18080B1EA73A9C008A8380 /* DIARY+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DIARY+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */,
 				5F0874A31E93700E0027A0D6 /* myApp.xcdatamodeld */,
 				5F0C2FA81EA4946A005E017D /* listViewController.swift */,
+				5F065FF71EA9CF3800DBBADF /* customPin.swift */,
 			);
 			path = myApp;
 			sourceTree = "<group>";
@@ -217,7 +220,7 @@
 				TargetAttributes = {
 					5F4A3DCE1E88F424005F26E5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5VQ43Y3ARD;
+						DevelopmentTeam = JNUV3AMKEJ;
 						ProvisioningStyle = Automatic;
 					};
 					5F4A3DE21E88F424005F26E5 = {
@@ -291,6 +294,7 @@
 				5F4A3DD31E88F424005F26E5 /* AppDelegate.swift in Sources */,
 				5F18080E1EA73A9C008A8380 /* DIARY+CoreDataProperties.swift in Sources */,
 				5F0C2FA91EA4946A005E017D /* listViewController.swift in Sources */,
+				5F065FF81EA9CF3800DBBADF /* customPin.swift in Sources */,
 				5F18080D1EA73A9C008A8380 /* DIARY+CoreDataClass.swift in Sources */,
 				5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */,
 				5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */,
@@ -445,10 +449,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5VQ43Y3ARD;
+				DEVELOPMENT_TEAM = JNUV3AMKEJ;
 				INFOPLIST_FILE = myApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukimitsudome.myApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yukimitsudome.myapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -458,10 +462,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5VQ43Y3ARD;
+				DEVELOPMENT_TEAM = JNUV3AMKEJ;
 				INFOPLIST_FILE = myApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukimitsudome.myApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yukimitsudome.myapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

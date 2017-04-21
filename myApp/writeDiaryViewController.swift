@@ -125,12 +125,10 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
             //キーボードを出さないようにする
             return false
-            
-            
+        
             
         default:
             return true
-            
             
         }
         return true
@@ -229,6 +227,17 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         let nikki = myDefault.string(forKey: "selectedPhotoURL")
         
+        let mystart = DateFormatter()
+        mystart.dateFormat = "yyyy/MM/dd"
+        
+        let myend = DateFormatter()
+        myend.dateFormat = "yyyy/MM/dd"
+        
+        //newRecord.setValue(mystart, forKey: "startDate")
+        var dateDate = mystart.date(from: myDate.text!)
+        
+        var dateDateDate = mystart.date(from: myDate2.text!)
+        
         
         //TODO:値の代入を追加する
         newRecord.setValue(myTitle.text, forKey: "title")
@@ -238,6 +247,15 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         newRecord.setValue(textToWrite.text, forKey:"content")
         
         newRecord.setValue(nikki, forKey: "image1")
+        
+        newRecord.setValue(dateDate, forKey: "startDate")
+        
+        newRecord.setValue(dateDateDate, forKey: "endDate")
+      
+        
+        
+        
+        
         
         //firstPicにデータが入ってなかったら
         if "image2" == nil {

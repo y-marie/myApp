@@ -43,7 +43,8 @@ class showDiaryViewController: UIViewController {
             let asset: PHAsset = (fetchResult.firstObject! as PHAsset)
             let manager: PHImageManager = PHImageManager()
                 manager.requestImage(for: asset,targetSize: CGSize(width: 5, height: 500),contentMode: .aspectFill,options: nil) { (image, info) -> Void in
-                self.firstImage.image = image
+                
+                    self.firstImage.image = image
             }
             
         }
@@ -89,6 +90,7 @@ class showDiaryViewController: UIViewController {
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
             }
+            
         }catch{
         }
     }
