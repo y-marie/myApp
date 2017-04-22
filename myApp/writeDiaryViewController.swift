@@ -320,9 +320,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             //カメラタイプに設定
             picker.sourceType = camera
-            
-            //指示を出すところはViewControllerだと設定
-            //デリゲート:委任する、代理人
             picker.delegate = self
             
             //pickerを表示

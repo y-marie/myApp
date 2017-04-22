@@ -24,52 +24,10 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         // mapViewの中心を現在地にする
         map1.setCenter(map1.userLocation.coordinate, animated: true)
         
-//        let coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759)
-//        
-//        let myPin = MKPointAnnotation()
-//        
-//        myPin.coordinate = coordinate
-//        myPin.coordinate = coordinate
-//        myPin.title = "ayala"
-//        map1.addAnnotation(myPin)
-        
         read()
         
         
-//        for diary in diaryList {
-//            
-//            var dic:NSDictionary = diary as! NSDictionary
-//            
-//            let latitude:NSString = dic["Latitude"] as! NSString
-//            
-//            let longitude:NSString = dic["Longitude"] as! NSString
-//            
-//            print(latitude)
-//            print(longitude)
-//            
-////            let latitudef:Float = Float(dic["Latitude"])
-//            
-//            let latitudef:Float = latitude.floatValue
-//            
-//            let longitudef:Float = longitude.floatValue
-//            
-//            print(latitudef)
-//            print(longitudef)
-//            
-//            //atof数字にする
-//            
-//            if latitudef != nil {
-//                //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
-//                let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
-//                let myPin = MKPointAnnotation()
-//                
-//                myPin.coordinate = coordinate
-//                myPin.coordinate = coordinate
-//                myPin.title = "ayala"
-//                map1.addAnnotation(myPin)
-//        }
-//        }
-//        
+        
     }
     
     func read(){
@@ -141,7 +99,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
                     
         
-                    self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title,"longitude":longitude,"latitude":latitude,"startDate":startDate,"content":content,"endDate":endDate])
+        self.diaryList.add(["image1":image1, "saveDate":saveDate,"title":title,"longitude":longitude,"latitude":latitude,"startDate":startDate,"content":content,"endDate":endDate])
                     
                     
                     print(latitude)
@@ -215,9 +173,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         else {
             pinView?.annotation = annotation
         }
-//        let rightButton: AnyObject! = UIButton(type:)
-//        
-//        pinView?.rightCalloutAccessoryView = rightButton as? UIView
         
         return pinView
         
@@ -256,6 +211,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         secondVC.selectedNomber = selectedIndex
     
     }
+    
     
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

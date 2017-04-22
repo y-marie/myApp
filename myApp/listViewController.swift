@@ -58,10 +58,15 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 
                 let content: String? = result.value(forKey: "content") as? String
                 
-                print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)")
-            
-                //   ,":\()"    for copy
-                diaryList.add(["title":title,"saveDate":saveDate,"image1":image1,"content":content])
+                let startDate: Date? = result.value(forKey: "startDate") as? Date
+                
+                let endDate: Date? = result.value(forKey: "endDate") as? Date
+                
+                print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)" ,"startDate:\(startDate)","endDate:\(endDate)")
+//   ,":\()"    for copy
+
+                diaryList.add(["title":title,"saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
+//   ,"":
             }
         }catch{
         }
@@ -92,7 +97,7 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         print("\(indexPath.row)行目が選択されました")
         
-        //メンバ変数に行番号を保存
+        //メンバ変数に行番号保存
         selectedIndex = indexPath.row
         
         //セグエを指定して画面遷移
@@ -114,17 +119,15 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         }else{
             
-//            let storyboard: UIStoryboard = self.storyboard!
-//            
-//            let nextView = storyboard.instantiateViewController(withIdentifier: "next") as! writeDiaryViewController
-//            
-//            self.present(nextView, animated: true,completion: nil)
             
         }
         
     }
 
     @IBAction func tapToAdd(_ sender: UIButton) {
+        
+        //画面遷移しなかったのでコードで
+        performSegue(withIdentifier: "next", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

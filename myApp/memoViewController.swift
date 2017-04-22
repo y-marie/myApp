@@ -21,8 +21,8 @@ class memoViewController: UIViewController {
         }
         print(memoMemo)
     }
-
-    @IBAction func tapToSaveMemo(_ sender: UIButton) {
+    
+        @IBAction func tapToSaveMemo(_ sender: UIButton) {
         
         memoMemo.add(["memo":myMemoField])
         
@@ -42,6 +42,8 @@ class memoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
+    
+    
     
     @IBAction func tapToDelete(_ sender: UIButton) {
     }

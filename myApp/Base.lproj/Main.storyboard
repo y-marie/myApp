@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List View Controller-->
+        <!--日記一覧-->
         <scene sceneID="7me-fa-b5l">
             <objects>
                 <viewController id="2wN-lB-TkP" customClass="listViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,16 +24,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gTn-YQ-If8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gTn-YQ-If8">
                                 <rect key="frame" x="0.0" y="60" width="320" height="459"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="nFf-7T-adp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="nFf-7T-adp">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nFf-7T-adp" id="84n-iA-m8N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -45,20 +44,30 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gTn-YQ-If8" firstAttribute="leading" secondItem="SMJ-B8-EHe" secondAttribute="leading" id="HHb-Hj-aOc"/>
+                            <constraint firstAttribute="trailing" secondItem="gTn-YQ-If8" secondAttribute="trailing" id="fIQ-Fw-myN"/>
+                            <constraint firstItem="NfY-Eg-1Uj" firstAttribute="top" secondItem="gTn-YQ-If8" secondAttribute="bottom" constant="5" id="fP5-7D-W9q"/>
+                            <constraint firstItem="gTn-YQ-If8" firstAttribute="top" secondItem="SMJ-B8-EHe" secondAttribute="topMargin" constant="60" id="yqy-dt-Gpa"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VPP-3Z-jTg">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="RTe-L7-OXn">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ada-k0-Ruq">
-                                <rect key="frame" x="273" y="7" width="31" height="30"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="日記一覧" id="sDA-RP-hCt">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4LF-47-DCk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I8i-dK-A8l">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="追加"/>
                                 <connections>
-                                    <action selector="tapToAdd:" destination="2wN-lB-TkP" eventType="touchUpInside" id="ocT-67-h1Z"/>
-                                    <segue destination="2yK-u6-M11" kind="show" identifier="next" id="N96-vw-XDw"/>
+                                    <action selector="tapToAdd:" destination="2wN-lB-TkP" eventType="touchUpInside" id="FeZ-8i-Vsc"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <segue destination="2yK-u6-M11" kind="push" identifier="next" id="rSI-sL-Y6M"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTableView" destination="gTn-YQ-If8" id="1ph-Mn-lN0"/>
                         <segue destination="85D-Dt-cy3" kind="show" identifier="hyouji" id="4Jc-Kj-iwi"/>
@@ -92,7 +101,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX2-RW-uiO">
-                                <rect key="frame" x="44" y="148.5" width="77" height="30"/>
+                                <rect key="frame" x="44" y="148" width="77" height="30"/>
                                 <state key="normal" title="写真を選択"/>
                                 <connections>
                                     <action selector="PickImage:" destination="2yK-u6-M11" eventType="touchUpInside" id="NkU-dK-UzI"/>
@@ -121,7 +130,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tr0-gz-PIf">
-                                <rect key="frame" x="199" y="148.5" width="77" height="30"/>
+                                <rect key="frame" x="199" y="148" width="77" height="30"/>
                                 <state key="normal" title="写真を撮る"/>
                                 <connections>
                                     <action selector="tapCamera:" destination="2yK-u6-M11" eventType="touchUpInside" id="ocm-cs-kLx"/>
@@ -138,7 +147,7 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-GZ-evJ">
-                                <rect key="frame" x="16" y="186.5" width="288" height="160.5"/>
+                                <rect key="frame" x="16" y="186" width="288" height="166"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9Q-Du-GJT">
                                 <rect key="frame" x="16" y="380" width="288" height="131"/>
@@ -367,14 +376,8 @@
                                     <action selector="tapToBack:" destination="85D-Dt-cy3" eventType="touchUpInside" id="ag0-Ft-hE6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFA-Gx-6cf">
-                                <rect key="frame" x="27" y="69" width="70" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgD-h0-KVF">
-                                <rect key="frame" x="27" y="108" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFA-Gx-6cf">
+                                <rect key="frame" x="16" y="67" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -384,6 +387,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="SmF-wA-By2"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgD-h0-KVF">
+                                <rect key="frame" x="16" y="108" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -400,11 +409,13 @@
                             <constraint firstItem="dXu-Iv-YGJ" firstAttribute="trailing" secondItem="boz-su-DMs" secondAttribute="trailing" id="GdC-CN-dnB"/>
                             <constraint firstItem="HI7-79-iKX" firstAttribute="top" secondItem="boz-su-DMs" secondAttribute="bottom" constant="8" symbolic="YES" id="P5K-54-Y7i"/>
                             <constraint firstItem="uFA-Gx-6cf" firstAttribute="centerY" secondItem="bAl-id-zlW" secondAttribute="centerY" id="SPd-d1-bVM"/>
+                            <constraint firstItem="boz-su-DMs" firstAttribute="leading" secondItem="Kc5-b0-6B4" secondAttribute="leadingMargin" id="SjS-0J-pZ5"/>
                             <constraint firstItem="bAl-id-zlW" firstAttribute="trailing" secondItem="Kc5-b0-6B4" secondAttribute="trailingMargin" id="Smm-nl-H8C"/>
                             <constraint firstItem="1Cb-DP-lyC" firstAttribute="leading" secondItem="VgD-h0-KVF" secondAttribute="trailing" constant="8" symbolic="YES" id="UeO-w1-thF"/>
                             <constraint firstItem="1Cb-DP-lyC" firstAttribute="baseline" secondItem="dXu-Iv-YGJ" secondAttribute="baseline" id="WDw-Eu-2kP"/>
                             <constraint firstItem="3aA-AT-3d2" firstAttribute="top" secondItem="HI7-79-iKX" secondAttribute="bottom" constant="8" symbolic="YES" id="WSX-4G-lhP"/>
                             <constraint firstItem="dXu-Iv-YGJ" firstAttribute="leading" secondItem="1Cb-DP-lyC" secondAttribute="trailing" constant="27" id="Wjl-vV-mNa"/>
+                            <constraint firstItem="boz-su-DMs" firstAttribute="trailing" secondItem="Kc5-b0-6B4" secondAttribute="trailingMargin" id="Wvg-1d-2Eg"/>
                             <constraint firstItem="boz-su-DMs" firstAttribute="top" secondItem="MrH-Gl-GRj" secondAttribute="bottom" constant="10" id="X0u-wG-gNG"/>
                             <constraint firstItem="MrH-Gl-GRj" firstAttribute="baseline" secondItem="fEs-DM-9Xx" secondAttribute="firstBaseline" id="XtA-Gl-1Vq"/>
                             <constraint firstItem="bAl-id-zlW" firstAttribute="top" secondItem="WAT-1M-p9U" secondAttribute="bottom" id="aM3-bi-X3C"/>
@@ -452,11 +463,11 @@
             </objects>
             <point key="canvasLocation" x="-416" y="136"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--map-->
         <scene sceneID="UnL-oq-htl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Flr-FH-etN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="search" id="AEq-J2-VHS"/>
+                    <tabBarItem key="tabBarItem" title="map" selectedImage="map.png" id="AEq-J2-VHS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gYS-l1-meP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -491,6 +502,9 @@
             <point key="canvasLocation" x="736.875" y="-313.73239436619718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map.png" width="28" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4Jc-Kj-iwi"/>
     </inferredMetricsTieBreakers>
