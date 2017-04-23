@@ -6,12 +6,34 @@
 //  Copyright © 2017年 Yuki Mitsudome. All rights reserved.
 //
 
-//memoから引っ張る昨日
+//不透明化のコード入れたエラー出る
+
 
 import UIKit
 import Photos
 //import MobileCoreServices
 import CoreData
+
+extension UIImage{
+    
+//    // Resizeのクラスメソッドを作る.
+//    class func ResizeÜIImage(image : UIImage,width : CGFloat, height : CGFloat)-> UIImage!{
+//        
+//        // 指定された画像の大きさのコンテキストを用意.
+//        UIGraphicsBeginImageContext(CGSize(width, height))
+//        
+//        // コンテキストに画像を描画する.
+//        image.draw(in: CGRect(0, 0, width, height))
+//        
+//        // コンテキストからUIImageを作る.
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        // コンテキストを閉じる.
+//        UIGraphicsEndImageContext()
+//        
+//        return newImage
+//    }
+//}
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
 
@@ -20,6 +42,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var myDate: UITextField!
     @IBOutlet weak var myDate2: UITextField!
     @IBOutlet weak var firstPic: UIImageView!
+    @IBOutlet weak var kesiki: UIImageView!
     
     var diaryList = NSMutableArray()
     var selectedDate = Date()
@@ -39,11 +62,23 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
   override func viewDidLoad() {
         super.viewDidLoad()
     
-   
+   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "kesiki.jpg")!)
+    
+//    // 画像の設定.
+//    let myImage:UIImage = UIImage(named:"kesiki")!
+//    
+//    // リサイズされたUIImageを指定して、UIImageViewを作る.
+//    let myImageView = UIImageView(image: UIImage.ResizeÜIImage(image: myImage, width: self.view.frame.maxX, height: self.view.frame.maxY))
+//    
+//    // 透過する.
+//    myImageView.alpha = 0.05
+//    
+//    // viewにUIImageViewを追加.
+//    self.view.addSubview(myImageView)
     
     
         read()
-        
+    
         //datePickerのmodeを日付のみに設定
         diaryDatePicker.datePickerMode = UIDatePickerMode.date
         
@@ -381,7 +416,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     
     @IBAction func tapToInsert(_ sender: UIButton) {
         
-        //UserDefaultから保存した配列を取り出す
+        //配列を取り出す
         //UserDefaultを用意
         var myDefault = UserDefaults.standard
         
@@ -393,6 +428,16 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
        
     }
     
+    @IBAction func tapToShare(_ sender: UIBarButtonItem) {
+        
+        //アクティビティービュー作成
+        let controller = UIActivityViewController(activityItems: [firstPic.image], applicationActivities: nil)
+        
+        //アクティビティービュー表示
+        present(controller, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func tapToClose(_ sender: UITextField) {
     }
    
@@ -400,4 +445,5 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         super.didReceiveMemoryWarning()
         }
     
+     }
 }

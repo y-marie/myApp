@@ -9,6 +9,7 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,9 +90,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-Th-cYi">
-                                <rect key="frame" x="112" y="68" width="193" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-Th-cYi">
+                                <rect key="frame" x="94" y="68" width="211" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -109,14 +109,16 @@
                                     <action selector="PickImage:" destination="2yK-u6-M11" eventType="touchUpInside" id="NkU-dK-UzI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-Km-cWC">
-                                <rect key="frame" x="16" y="71" width="69.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zed-Km-cWC">
+                                <rect key="frame" x="16" y="71" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7K-dP-kk0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7K-dP-kk0">
                                 <rect key="frame" x="16" y="112" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -171,7 +173,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="〜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2l7-zg-DIL">
-                                <rect key="frame" x="177" y="120" width="21.5" height="21"/>
+                                <rect key="frame" x="177" y="120" width="22" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -180,25 +182,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zed-Km-cWC" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" id="0lX-Ny-EsO"/>
-                            <constraint firstItem="H7K-dP-kk0" firstAttribute="top" secondItem="Zed-Km-cWC" secondAttribute="bottom" constant="20" id="EdX-Te-92I"/>
-                            <constraint firstItem="H7K-dP-kk0" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" id="FaM-J1-5Rm"/>
-                            <constraint firstItem="Zed-Km-cWC" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" id="Q8h-5G-pNv"/>
-                            <constraint firstItem="Zed-Km-cWC" firstAttribute="top" secondItem="MnD-cZ-8do" secondAttribute="bottom" constant="5" id="e7P-w0-UEc"/>
-                            <constraint firstItem="Zed-Km-cWC" firstAttribute="top" secondItem="MnD-cZ-8do" secondAttribute="bottom" constant="7" id="wU8-kT-6I6"/>
+                            <constraint firstAttribute="trailing" secondItem="JsF-Th-cYi" secondAttribute="trailing" constant="15" id="TTO-Aq-Dco"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="新規追加" id="hgi-a5-OYq">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Tea-4c-3hZ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LxW-Np-baz">
-                                <rect key="frame" x="273" y="7" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="保存"/>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="Tea-4c-3hZ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LxW-Np-baz">
+                                    <rect key="frame" x="273" y="7" width="31" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="保存"/>
+                                    <connections>
+                                        <action selector="tapToSave:" destination="2yK-u6-M11" eventType="touchUpInside" id="bd5-Md-eEy"/>
+                                    </connections>
+                                </button>
+                                <color key="tintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" systemItem="action" id="RRA-1y-3Wl">
                                 <connections>
-                                    <action selector="tapToSave:" destination="2yK-u6-M11" eventType="touchUpInside" id="bd5-Md-eEy"/>
+                                    <action selector="tapToShare:" destination="2yK-u6-M11" id="kUT-Z8-V9n"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="firstPic" destination="zcj-GZ-evJ" id="zVj-wz-yA0"/>
