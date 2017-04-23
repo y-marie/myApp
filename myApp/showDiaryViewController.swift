@@ -29,12 +29,11 @@ class showDiaryViewController: UIViewController {
         print(dic)
         
         myTitle?.text = dic["title"] as! String
-        
-
-        //  myDate?.text = dic[""] as! String
    
         textToWrite?.text = dic["content"] as! String
         
+        self.firstImage.layer.cornerRadius = 35
+        self.firstImage.layer.masksToBounds = true
         let strURL =  dic["image1"] as! String
         if strURL != nil{
             
@@ -48,7 +47,6 @@ class showDiaryViewController: UIViewController {
             }
             
         }
-        
         print(diaryList)
         
     }

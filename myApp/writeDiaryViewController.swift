@@ -34,11 +34,14 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     
     let controller = UIImagePickerController()
     
-     var memoMemo = NSMutableArray()
+    var memoMemo = NSMutableArray()
 
-    override func viewDidLoad() {
+  override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+   
+    
+    
         read()
         
         //datePickerのmodeを日付のみに設定
@@ -77,10 +80,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         self.view.addSubview(baseView)
         
   }
-    
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//
-//    }
     
     //テキストフィールド入力開始
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -333,6 +332,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         //型キャスティング（型変換）
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        self.firstPic.layer.cornerRadius = 35
+        self.firstPic.layer.masksToBounds = true
         self.firstPic.image = image
         
         //  自分のデバイスに（アプリが動いてる場所）に写真を保存

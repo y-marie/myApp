@@ -26,8 +26,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         
         read()
         
-        
-        
     }
     
     func read(){
