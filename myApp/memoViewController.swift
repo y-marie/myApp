@@ -19,6 +19,7 @@ class memoViewController: UIViewController {
             
             myMemoField.text = myDefault.object(forKey:"memoMemo") as! String
         }
+        
         print(memoMemo)
     }
     
@@ -34,7 +35,15 @@ class memoViewController: UIViewController {
         myDefault.set(myMemoField.text,forKey:"memoMemo")
         
         myDefault.synchronize()
+            
+        resignFirstResponder()
+            
+        let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
         
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            present(alertController, animated: true, completion: nil)
+            
     }
     
 
@@ -42,8 +51,6 @@ class memoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-    
-    
     
     @IBAction func tapToDelete(_ sender: UIButton) {
     }

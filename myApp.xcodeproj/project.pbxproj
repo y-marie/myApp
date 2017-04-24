@@ -24,6 +24,7 @@
 		5F4A3DF31E88F424005F26E5 /* myAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3DF21E88F424005F26E5 /* myAppUITests.swift */; };
 		5F4A3E031E88F986005F26E5 /* writeDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */; };
 		5F4A3E051E88F9DB005F26E5 /* memoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */; };
+		5F55314F1EACC675004025E4 /* kame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F55314E1EACC675004025E4 /* kame.png */; };
 		5F7FF96D1EAB415E00FB770C /* mainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FF96C1EAB415E00FB770C /* mainTabbarController.swift */; };
 		5F7FF96F1EAB60A400FB770C /* haikei.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FF96E1EAB60A400FB770C /* haikei.png */; };
 		5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */; };
@@ -72,6 +73,7 @@
 		5F4A3DF41E88F424005F26E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4A3E021E88F986005F26E5 /* writeDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writeDiaryViewController.swift; sourceTree = "<group>"; };
 		5F4A3E041E88F9DB005F26E5 /* memoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memoViewController.swift; sourceTree = "<group>"; };
+		5F55314E1EACC675004025E4 /* kame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kame.png; sourceTree = "<group>"; };
 		5F7FF96C1EAB415E00FB770C /* mainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainTabbarController.swift; sourceTree = "<group>"; };
 		5F7FF96E1EAB60A400FB770C /* haikei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haikei.png; sourceTree = "<group>"; };
 		5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showDiaryViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				5F04D0E01EABDDEF0063854C /* Note.png */,
 				5F04D0E21EABDE080063854C /* List.png */,
 				5F04D0E41EABE05B0063854C /* Pin.png */,
+				5F55314E1EACC675004025E4 /* kame.png */,
 				5F7FF96E1EAB60A400FB770C /* haikei.png */,
 				5FF4B8211EACAA05009920FD /* kesiki.jpg */,
 				5F4A3DD21E88F424005F26E5 /* AppDelegate.swift */,
@@ -280,6 +283,7 @@
 			files = (
 				5F04D0E51EABE05B0063854C /* Pin.png in Resources */,
 				5FF4B8221EACAA05009920FD /* kesiki.jpg in Resources */,
+				5F55314F1EACC675004025E4 /* kame.png in Resources */,
 				5F4A3DDD1E88F424005F26E5 /* LaunchScreen.storyboard in Resources */,
 				5F7FF96F1EAB60A400FB770C /* haikei.png in Resources */,
 				5F04D0E11EABDDEF0063854C /* Note.png in Resources */,

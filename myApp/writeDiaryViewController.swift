@@ -4,9 +4,6 @@
 //
 //  Created by 有希 on 2017/03/27.
 //  Copyright © 2017年 Yuki Mitsudome. All rights reserved.
-//
-
-//不透明化のコード入れたエラー出る
 
 
 import UIKit
@@ -14,26 +11,6 @@ import Photos
 //import MobileCoreServices
 import CoreData
 
-extension UIImage{
-    
-//    // Resizeのクラスメソッドを作る.
-//    class func ResizeÜIImage(image : UIImage,width : CGFloat, height : CGFloat)-> UIImage!{
-//        
-//        // 指定された画像の大きさのコンテキストを用意.
-//        UIGraphicsBeginImageContext(CGSize(width, height))
-//        
-//        // コンテキストに画像を描画する.
-//        image.draw(in: CGRect(0, 0, width, height))
-//        
-//        // コンテキストからUIImageを作る.
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        
-//        // コンテキストを閉じる.
-//        UIGraphicsEndImageContext()
-//        
-//        return newImage
-//    }
-//}
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
 
@@ -42,7 +19,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var myDate: UITextField!
     @IBOutlet weak var myDate2: UITextField!
     @IBOutlet weak var firstPic: UIImageView!
-    @IBOutlet weak var kesiki: UIImageView!
+    @IBOutlet weak var haikei: UIImageView!
     
     var diaryList = NSMutableArray()
     var selectedDate = Date()
@@ -62,21 +39,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
   override func viewDidLoad() {
         super.viewDidLoad()
     
-   self.view.backgroundColor = UIColor(patternImage: UIImage(named: "kesiki.jpg")!)
-    
-//    // 画像の設定.
-//    let myImage:UIImage = UIImage(named:"kesiki")!
-//    
-//    // リサイズされたUIImageを指定して、UIImageViewを作る.
-//    let myImageView = UIImageView(image: UIImage.ResizeÜIImage(image: myImage, width: self.view.frame.maxX, height: self.view.frame.maxY))
-//    
-//    // 透過する.
-//    myImageView.alpha = 0.05
-//    
-//    // viewにUIImageViewを追加.
-//    self.view.addSubview(myImageView)
-    
-    
+   
         read()
     
         //datePickerのmodeを日付のみに設定
@@ -95,7 +58,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         closeBtnDP.frame = CGRect(x: self.view.frame.width - 60, y:  0, width:  50, height: 20)
         
         //タイトルの設定
-        closeBtnDP.setTitle("Close", for: .normal)
+        closeBtnDP.setTitle("閉じる", for: .normal)
         
         //イベントの追加
         //TODO:後ほど
@@ -285,42 +248,33 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         newRecord.setValue(dateDate, forKey: "startDate")
         
         newRecord.setValue(dateDateDate, forKey: "endDate")
-      
         
         
-        
-        
-        
-        //firstPicにデータが入ってなかったら
-        if "image2" == nil {
+        if nikki == nil {
             
-            let alertController = UIAlertController(title: "写真を選択", message: "", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "写真を選択してください", message: "", preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
             present(alertController, animated: true, completion: nil)
             
                     } else{
+            
+            do {
+                
+                try viewContext.save()
+                
+            }catch{
+                
+                //例外を書く
+                //errorの時とか
+            }
+            
+            self.dismiss(animated: true)
+            
         }
+    }
 
-        
-        do {
-            try viewContext.save()
-            
-            //再読み込み
-//            read()
-            
-        }catch{
-            
-            //例外を書く
-            //errorの時とか
-        }
-        
-        self.dismiss(animated: true)
-        
-}
-    
-    
     @IBAction func PickImage(_ sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
@@ -446,4 +400,4 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         }
     
      }
-}
+

@@ -32,8 +32,14 @@ class showDiaryViewController: UIViewController {
    
         textToWrite?.text = dic["content"] as! String
         
+        //画像角落とす
         self.firstImage.layer.cornerRadius = 35
         self.firstImage.layer.masksToBounds = true
+        //枠線
+        self.firstImage.layer.borderColor = UIColor.black.cgColor
+        self.firstImage.layer.borderWidth = 1
+        
+        
         let strURL =  dic["image1"] as! String
         if strURL != nil{
             

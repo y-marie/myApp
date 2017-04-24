@@ -65,7 +65,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
 
                 //imageから位置情報をとりだす
                 
-                
+                if image1 != nil{
+                    
                 let url = URL(string: image1 as String!)
                 
                 let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
@@ -135,12 +136,11 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
                         }
                 }
                     
-                    })
+                }) }
                 
             }
         }catch{
-        }
-        
+    }
     }
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -190,17 +190,14 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
             
             print(tag)
             
+            selectedIndex = tag
+            
             performSegue(withIdentifier: "showDiaryView", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "taptap1" {
-            selectedIndex = 0
-        } else{
-            selectedIndex = 1
-        }
         
         //次の遷移先の画面をインスタンス化して取得
         let secondVC = segue.destination as! showDiaryViewController

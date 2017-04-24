@@ -118,9 +118,7 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         secondVC.selectedNomber = selectedIndex
         
         }else{
-            
-            
-        }
+    }
         
     }
 
