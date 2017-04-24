@@ -97,6 +97,16 @@ class showDiaryViewController: UIViewController {
         }
     }
     
+    @IBAction func tapToShare(_ sender: UIBarButtonItem) {
+        
+        //アクティビティービュー作成
+        let controller = UIActivityViewController(activityItems: [firstImage.image], applicationActivities: nil)
+        
+        //アクティビティービュー表示
+        present(controller, animated: true, completion: nil)
+
+    }
+    
     @IBAction func tapToBack(_ sender: UIButton) {
     }
     

@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F04D0E11EABDDEF0063854C /* Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F04D0E01EABDDEF0063854C /* Note.png */; };
 		5F04D0E31EABDE080063854C /* List.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F04D0E21EABDE080063854C /* List.png */; };
-		5F04D0E51EABE05B0063854C /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F04D0E41EABE05B0063854C /* Pin.png */; };
 		5F065FF81EA9CF3800DBBADF /* customPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F065FF71EA9CF3800DBBADF /* customPin.swift */; };
 		5F0874A51E93700E0027A0D6 /* myApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F0874A31E93700E0027A0D6 /* myApp.xcdatamodeld */; };
 		5F0C2FA91EA4946A005E017D /* listViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C2FA81EA4946A005E017D /* listViewController.swift */; };
@@ -27,6 +25,8 @@
 		5F55314F1EACC675004025E4 /* kame.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F55314E1EACC675004025E4 /* kame.png */; };
 		5F7FF96D1EAB415E00FB770C /* mainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FF96C1EAB415E00FB770C /* mainTabbarController.swift */; };
 		5F7FF96F1EAB60A400FB770C /* haikei.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FF96E1EAB60A400FB770C /* haikei.png */; };
+		5F9095C71EAE7B7D008BD453 /* Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9095C61EAE7B7D008BD453 /* Note.png */; };
+		5F9095C91EAE7BA4008BD453 /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9095C81EAE7BA4008BD453 /* Pin.png */; };
 		5FE522951E8E1D860004D0FC /* showDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */; };
 		5FE657271E8CD4580090ACAC /* mapMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE657261E8CD4580090ACAC /* mapMapViewController.swift */; };
 		5FF4B8221EACAA05009920FD /* kesiki.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF4B8211EACAA05009920FD /* kesiki.jpg */; };
@@ -50,9 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F04D0E01EABDDEF0063854C /* Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Note.png; sourceTree = "<group>"; };
 		5F04D0E21EABDE080063854C /* List.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = List.png; sourceTree = "<group>"; };
-		5F04D0E41EABE05B0063854C /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		5F065FF71EA9CF3800DBBADF /* customPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customPin.swift; sourceTree = "<group>"; };
 		5F0874A41E93700E0027A0D6 /* myApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myApp.xcdatamodel; sourceTree = "<group>"; };
 		5F0C2FA81EA4946A005E017D /* listViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +74,8 @@
 		5F55314E1EACC675004025E4 /* kame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kame.png; sourceTree = "<group>"; };
 		5F7FF96C1EAB415E00FB770C /* mainTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainTabbarController.swift; sourceTree = "<group>"; };
 		5F7FF96E1EAB60A400FB770C /* haikei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haikei.png; sourceTree = "<group>"; };
+		5F9095C61EAE7B7D008BD453 /* Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Note.png; sourceTree = "<group>"; };
+		5F9095C81EAE7BA4008BD453 /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		5FE522941E8E1D860004D0FC /* showDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showDiaryViewController.swift; sourceTree = "<group>"; };
 		5FE657261E8CD4580090ACAC /* mapMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapMapViewController.swift; sourceTree = "<group>"; };
 		5FF4B8211EACAA05009920FD /* kesiki.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kesiki.jpg; sourceTree = "<group>"; };
@@ -131,9 +131,9 @@
 		5F4A3DD11E88F424005F26E5 /* myApp */ = {
 			isa = PBXGroup;
 			children = (
-				5F04D0E01EABDDEF0063854C /* Note.png */,
+				5F9095C61EAE7B7D008BD453 /* Note.png */,
+				5F9095C81EAE7BA4008BD453 /* Pin.png */,
 				5F04D0E21EABDE080063854C /* List.png */,
-				5F04D0E41EABE05B0063854C /* Pin.png */,
 				5F55314E1EACC675004025E4 /* kame.png */,
 				5F7FF96E1EAB60A400FB770C /* haikei.png */,
 				5FF4B8211EACAA05009920FD /* kesiki.jpg */,
@@ -281,12 +281,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F04D0E51EABE05B0063854C /* Pin.png in Resources */,
+				5F9095C91EAE7BA4008BD453 /* Pin.png in Resources */,
 				5FF4B8221EACAA05009920FD /* kesiki.jpg in Resources */,
+				5F9095C71EAE7B7D008BD453 /* Note.png in Resources */,
 				5F55314F1EACC675004025E4 /* kame.png in Resources */,
 				5F4A3DDD1E88F424005F26E5 /* LaunchScreen.storyboard in Resources */,
 				5F7FF96F1EAB60A400FB770C /* haikei.png in Resources */,
-				5F04D0E11EABDDEF0063854C /* Note.png in Resources */,
 				5F04D0E31EABDE080063854C /* List.png in Resources */,
 				5F4A3DDA1E88F424005F26E5 /* Assets.xcassets in Resources */,
 				5F4A3DD81E88F424005F26E5 /* Main.storyboard in Resources */,
