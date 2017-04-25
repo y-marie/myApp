@@ -249,6 +249,11 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         newRecord.setValue(dateDateDate, forKey: "endDate")
         
+        //alert
+        let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+        
         
         if nikki == nil {
             
@@ -271,7 +276,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             }
             
             self.dismiss(animated: true)
-            
         }
     }
 
@@ -380,15 +384,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             textToWrite?.text = myDefault.object(forKey:"memoMemo") as! String
         }
        
-    }
-    
-    @IBAction func tapToShare(_ sender: UIBarButtonItem) {
-        
-        //アクティビティービュー作成
-        let controller = UIActivityViewController(activityItems: [firstPic.image], applicationActivities: nil)
-        
-        //アクティビティービュー表示
-        present(controller, animated: true, completion: nil)
     }
     
     

@@ -5,8 +5,9 @@ import MapKit
 import CoreData
 import Photos
 import Darwin
+import CoreLocation
 
-class mapMapViewController: UIViewController, MKMapViewDelegate {
+class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
     
     var selectedName:String = ""
     var selectedIndex = -1
@@ -14,6 +15,18 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
   @IBOutlet weak var map1: MKMapView!
 
     var diaryList = NSMutableArray()
+    var locationManager: CLLocationManager!
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        }
+    }
 
     
     override func viewDidLoad() {
@@ -21,10 +34,32 @@ class mapMapViewController: UIViewController, MKMapViewDelegate {
         
         self.map1.delegate = self
         
-        // mapViewの中心を現在地にする
-        map1.setCenter(map1.userLocation.coordinate, animated: true)
+         map1.showsUserLocation = true
         
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager = CLLocationManager()
+            self.locationManager.delegate = self
+            self.locationManager.startUpdatingLocation()
+        }
+        
+        // mapViewの中心を現在地にする
+        
+        
+        //map1.userTrackingMode = MKUserTrackingMode.follow
+        
+      
         read()
+        
+    }
+    
+    // 位置情報が更新されるたびに呼ばれる
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        map1.setCenter((locations.last?.coordinate)!, animated: true)
+        
+        guard let newLocation = locations.last else {
+            return
+        }
         
     }
     

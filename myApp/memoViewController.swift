@@ -40,9 +40,13 @@ class memoViewController: UIViewController {
             
         let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
         
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.tabBarController?.selectedIndex = 2}))
+            //ok押されたらリストに飛ぶ
+            
+            //ok押されたら画面閉じる　action in self
             
             present(alertController, animated: true, completion: nil)
+            
             
     }
     

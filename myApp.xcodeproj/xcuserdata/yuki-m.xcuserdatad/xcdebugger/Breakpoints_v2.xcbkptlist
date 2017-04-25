@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myApp/mapMapViewController.swift"
-            timestampString = "514710974.774214"
+            timestampString = "514799466.149294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "read()"
             landmarkType = "7">
          </BreakpointContent>
