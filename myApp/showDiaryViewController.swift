@@ -31,6 +31,11 @@ class showDiaryViewController: UIViewController {
         myTitle?.text = dic["title"] as! String
    
         textToWrite?.text = dic["content"] as! String
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyy/MM/dd"
+//        let dateString: String = dateFormatter.string(from: myDate?)
+//        myDate?.text = dic["startdate"] as! String
         
         //画像角落とす
         self.firstImage.layer.cornerRadius = 35

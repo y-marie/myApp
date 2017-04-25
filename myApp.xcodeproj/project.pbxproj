@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F028BC81EAF98EC0086E3D5 /* sora.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F028BC71EAF98EC0086E3D5 /* sora.png */; };
 		5F04D0E31EABDE080063854C /* List.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F04D0E21EABDE080063854C /* List.png */; };
 		5F065FF81EA9CF3800DBBADF /* customPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F065FF71EA9CF3800DBBADF /* customPin.swift */; };
 		5F0874A51E93700E0027A0D6 /* myApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F0874A31E93700E0027A0D6 /* myApp.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F028BC71EAF98EC0086E3D5 /* sora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sora.png; sourceTree = "<group>"; };
 		5F04D0E21EABDE080063854C /* List.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = List.png; sourceTree = "<group>"; };
 		5F065FF71EA9CF3800DBBADF /* customPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customPin.swift; sourceTree = "<group>"; };
 		5F0874A41E93700E0027A0D6 /* myApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myApp.xcdatamodel; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				5F9095C81EAE7BA4008BD453 /* Pin.png */,
 				5F04D0E21EABDE080063854C /* List.png */,
 				5F55314E1EACC675004025E4 /* kame.png */,
+				5F028BC71EAF98EC0086E3D5 /* sora.png */,
 				5F7FF96E1EAB60A400FB770C /* haikei.png */,
 				5FF4B8211EACAA05009920FD /* kesiki.jpg */,
 				5F4A3DD21E88F424005F26E5 /* AppDelegate.swift */,
@@ -287,6 +290,7 @@
 				5F55314F1EACC675004025E4 /* kame.png in Resources */,
 				5F4A3DDD1E88F424005F26E5 /* LaunchScreen.storyboard in Resources */,
 				5F7FF96F1EAB60A400FB770C /* haikei.png in Resources */,
+				5F028BC81EAF98EC0086E3D5 /* sora.png in Resources */,
 				5F04D0E31EABDE080063854C /* List.png in Resources */,
 				5F4A3DDA1E88F424005F26E5 /* Assets.xcassets in Resources */,
 				5F4A3DD81E88F424005F26E5 /* Main.storyboard in Resources */,

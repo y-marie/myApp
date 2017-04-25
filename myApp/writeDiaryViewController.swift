@@ -329,6 +329,10 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         self.firstPic.layer.masksToBounds = true
         self.firstPic.image = image
         
+        self.firstPic.layer.borderColor = UIColor.black.cgColor
+        self.firstPic.layer.borderWidth = 1
+
+        
         //  自分のデバイスに（アプリが動いてる場所）に写真を保存
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
