@@ -27,7 +27,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
             break
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +41,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
             self.locationManager.startUpdatingLocation()
         }
         
-        // mapViewの中心を現在地にする
-        
-        
         //map1.userTrackingMode = MKUserTrackingMode.follow
         
-      
         read()
         
     }

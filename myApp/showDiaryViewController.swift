@@ -42,14 +42,15 @@ class showDiaryViewController: UIViewController {
         //画像角落とす
         self.firstImage.layer.cornerRadius = 35
         self.firstImage.layer.masksToBounds = true
+        
         //枠線
-        self.firstImage.layer.borderColor = UIColor.black.cgColor
-        self.firstImage.layer.borderWidth = 1
+//        self.firstImage.layer.borderColor = UIColor.black.cgColor
+//        self.firstImage.layer.borderWidth = 1
         
-//        self.myTitle.layer.borderColor = UIColor.clear as! CGColor
-//        self.myDate.layer.borderColor = UIColor.clear as! CGColor
-//        self.myDate2.layer.borderColor = UIColor.clear as! CGColor
-        
+        //textfield枠線透明
+        myTitle.borderStyle = .none
+        myDate.borderStyle = .none
+        myDate2.borderStyle = .none
         
         let strURL =  dic["image1"] as! String
         if strURL != nil{
@@ -103,7 +104,6 @@ class showDiaryViewController: UIViewController {
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
             }
-            
         }catch{
         }
     }

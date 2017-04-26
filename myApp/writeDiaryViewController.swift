@@ -119,11 +119,9 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 self.baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height - self.baseView.frame.height)
                 
         })
-        
             //キーボードを出さないようにする
             return false
         
-            
         default:
             return true
             
@@ -160,8 +158,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     func closeDatePicker(sender:UIButton){
         UIView.animate(withDuration: 0.5, animations: {()
             -> Void in self.baseView.frame.origin = CGPoint(x: 0, y: self.view.bounds.height)
-            
-            
         })
         
     }
@@ -264,7 +260,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             present(alertController, animated: true, completion: nil)
             
                     } else{
-            
             do {
                 
                 try viewContext.save()
@@ -329,8 +324,9 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         self.firstPic.layer.masksToBounds = true
         self.firstPic.image = image
         
-        self.firstPic.layer.borderColor = UIColor.black.cgColor
-        self.firstPic.layer.borderWidth = 1
+        //枠線
+//        self.firstPic.layer.borderColor = UIColor.black.cgColor
+//        self.firstPic.layer.borderWidth = 1
 
         
         //  自分のデバイスに（アプリが動いてる場所）に写真を保存
@@ -370,8 +366,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             myDefault.synchronize()
             
             self.controller.dismiss(animated: true)
-            
-            
         })
         
     }
@@ -389,7 +383,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         }
        
     }
-    
     
     @IBAction func tapToClose(_ sender: UITextField) {
     }
