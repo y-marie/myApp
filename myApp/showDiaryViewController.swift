@@ -31,11 +31,13 @@ class showDiaryViewController: UIViewController {
         myTitle?.text = dic["title"] as! String
    
         textToWrite?.text = dic["content"] as! String
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyy/MM/dd"
-//        let dateString: String = dateFormatter.string(from: myDate?)
-//        myDate?.text = dic["startdate"] as! String
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyy/MM/dd"
+        let dateString: String = dateFormatter.string(from: (dic["startDate"] as! Date?)!)
+        myDate?.text = dateString
+        let dateString2: String = dateFormatter.string(from: (dic["endDate"] as! Date?)!)
+        myDate2?.text = dateString2
         
         //画像角落とす
         self.firstImage.layer.cornerRadius = 35
@@ -43,6 +45,10 @@ class showDiaryViewController: UIViewController {
         //枠線
         self.firstImage.layer.borderColor = UIColor.black.cgColor
         self.firstImage.layer.borderWidth = 1
+        
+//        self.myTitle.layer.borderColor = UIColor.clear as! CGColor
+//        self.myDate.layer.borderColor = UIColor.clear as! CGColor
+//        self.myDate2.layer.borderColor = UIColor.clear as! CGColor
         
         
         let strURL =  dic["image1"] as! String
