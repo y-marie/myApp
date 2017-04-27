@@ -16,6 +16,7 @@ class showDiaryViewController: UIViewController {
     
     var selectedNomber:Int = -1
     var scdiaryList:[Int] = []
+    var selectedSaveDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()

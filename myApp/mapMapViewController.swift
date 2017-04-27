@@ -17,14 +17,30 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     var diaryList = NSMutableArray()
     var locationManager: CLLocationManager!
     
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        switch status {
+//        case .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//        case .restricted, .denied:
+//            break
+//        case .authorizedAlways, .authorizedWhenInUse:
+//            break
+//        }
+//    }
+    var regionout:Bool = false
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if regionout == false {
         switch status {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse:
             break
+        
+            }
+            regionout = true
         }
     }
     
@@ -228,12 +244,13 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        var dic = diaryList[selectedIndex] as! NSDictionary
         
         //次の遷移先の画面をインスタンス化して取得
         let secondVC = segue.destination as! showDiaryViewController
         
         //次の遷移先の画面のプロパティに、選択された行番号を保存
-        secondVC.selectedNomber = selectedIndex
+        secondVC.selectedSaveDate = dic["saveDate"] as! Date
     
     }
     

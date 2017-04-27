@@ -47,7 +47,6 @@ class memoViewController: UIViewController {
             
             present(alertController, animated: true, completion: nil)
             
-            
     }
     
 

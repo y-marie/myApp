@@ -203,53 +203,13 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         }catch{
 
         }
-
 }
     @IBAction func tapToSave(_ sender: UIButton) {
         
         
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let viewContext = appDelegate.persistentContainer.viewContext
-        
-        let diaryObject = NSEntityDescription.entity(forEntityName: "DIARY", in: viewContext)
-        
-        let newRecord = NSManagedObject(entity: diaryObject!, insertInto: viewContext)
-        
-        let myDefault = UserDefaults.standard
+          let myDefault = UserDefaults.standard
         
         let nikki = myDefault.string(forKey: "selectedPhotoURL")
-        
-        let mystart = DateFormatter()
-        mystart.dateFormat = "yyyy/MM/dd"
-        
-        let myend = DateFormatter()
-        myend.dateFormat = "yyyy/MM/dd"
-        
-        //newRecord.setValue(mystart, forKey: "startDate")
-        var dateDate = mystart.date(from: myDate.text!)
-        
-        var dateDateDate = mystart.date(from: myDate2.text!)
-        
-        
-        //TODO:値の代入を追加する
-        newRecord.setValue(myTitle.text, forKey: "title")
-        
-        newRecord.setValue(Date(), forKey:"saveDate")
-        
-        newRecord.setValue(textToWrite.text, forKey:"content")
-        
-        newRecord.setValue(nikki, forKey: "image1")
-        
-        newRecord.setValue(dateDate, forKey: "startDate")
-        
-        newRecord.setValue(dateDateDate, forKey: "endDate")
-        
-        //alert
-        let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
-        
         
         if nikki == nil {
             
@@ -259,10 +219,55 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             present(alertController, animated: true, completion: nil)
             
-                    } else{
+        } else{
+            
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let viewContext = appDelegate.persistentContainer.viewContext
+            
+            let diaryObject = NSEntityDescription.entity(forEntityName: "DIARY", in: viewContext)
+            
+            let newRecord = NSManagedObject(entity: diaryObject!, insertInto: viewContext)
+            
+            let mystart = DateFormatter()
+            mystart.dateFormat = "yyyy/MM/dd"
+            
+            let myend = DateFormatter()
+            myend.dateFormat = "yyyy/MM/dd"
+            
+            //newRecord.setValue(mystart, forKey: "startDate")
+            var dateDate = mystart.date(from: myDate.text!)
+            
+            var dateDateDate = mystart.date(from: myDate2.text!)
+            
+            
+            //TODO:値の代入を追加する
+            newRecord.setValue(myTitle.text, forKey: "title")
+            
+            newRecord.setValue(Date(), forKey:"saveDate")
+            
+            newRecord.setValue(textToWrite.text, forKey:"content")
+            
+            newRecord.setValue(nikki, forKey: "image1")
+            
+            newRecord.setValue(dateDate, forKey: "startDate")
+            
+            newRecord.setValue(dateDateDate, forKey: "endDate")
+
+            
+            
+            //alert
+            let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+           
+            present(alertController, animated: true, completion: nil)
+            
+            
             do {
                 
                 try viewContext.save()
+                
+                myDefault.removeObject(forKey: "selectedPhotoURL")
                 
             }catch{
                 
@@ -270,7 +275,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 //errorの時とか
             }
             
-            self.dismiss(animated: true)
+           // self.dismiss(animated: true)
         }
     }
 
