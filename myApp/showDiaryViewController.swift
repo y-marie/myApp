@@ -34,8 +34,10 @@ class showDiaryViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyy/MM/dd"
+        
         let dateString: String = dateFormatter.string(from: (dic["startDate"] as! Date?)!)
         myDate?.text = dateString
+        
         let dateString2: String = dateFormatter.string(from: (dic["endDate"] as! Date?)!)
         myDate2?.text = dateString2
         
