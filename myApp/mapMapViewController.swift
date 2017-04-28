@@ -27,6 +27,9 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
 //            break
 //        }
 //    }
+    
+    
+    //中心地一度だけ現在地にする(フラグ)
     var regionout:Bool = false
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -59,8 +62,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         
         //map1.userTrackingMode = MKUserTrackingMode.follow
         
-        read()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        read()
+
     }
     
     // 位置情報が更新されるたびに呼ばれる
@@ -128,6 +135,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     // 対象アセットのURLからCIImageを生成
                     let inputImage = CIImage(contentsOf: url!)!
                     
+                    print( inputImage.properties);
+                    
                     if inputImage.properties["{GPS}"] != nil{
                     
                     let gps:NSDictionary = inputImage.properties["{GPS}"] as! NSDictionary
@@ -170,7 +179,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                         
                         myPin.coordinate = coordinate
                         myPin.coordinate = coordinate
-                        myPin.title = "a"
+                        myPin.title = "\(title!)"
+                        //optional消す
                         myPin.tag = i
                 
                         
@@ -230,6 +240,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
+            
             print("button tapped")
         
             var tag = (control as! UIButton).tag
@@ -249,12 +260,10 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         //次の遷移先の画面をインスタンス化して取得
         let secondVC = segue.destination as! showDiaryViewController
         
-        //次の遷移先の画面のプロパティに、選択された行番号を保存
+        //次の遷移先の画面のプロパティに、セーブデータを送る
         secondVC.selectedSaveDate = dic["saveDate"] as! Date
     
     }
-    
-    
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

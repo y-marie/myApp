@@ -88,6 +88,8 @@ class showDiaryViewController: UIViewController {
             //データを一括取得
             let fetchResults = try viewContext.fetch(query)
             
+            var i = 0
+            
             //データの取得
             for result: AnyObject in fetchResults{
                 
@@ -106,6 +108,15 @@ class showDiaryViewController: UIViewController {
                 //("title:\(title) saveDate:\(saveDate)")
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
+                
+                if saveDate == selectedSaveDate{
+                    selectedNomber = i
+                }
+                
+                i = i + 1
+                
+                
+                
             }
         }catch{
         }

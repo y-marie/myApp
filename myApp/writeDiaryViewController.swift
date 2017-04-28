@@ -299,39 +299,39 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
          }
     }
     
-    @IBAction func tapCamera(_ sender: UIButton) {
-        
-        //カメラが使えるかどうか判別するための情報を取得
-        let camera = UIImagePickerControllerSourceType.camera
-        
-        //このアプリが起動されているデバイスにカメラ機能がついてるか判定
-        if UIImagePickerController.isSourceTypeAvailable(camera){
-            
-            //ImgePickerControllerオブジェクトを作成
-            let picker = UIImagePickerController()
-            
-            //カメラタイプに設定
-            picker.sourceType = camera
-            picker.delegate = self
-            
-            //pickerを表示
-            self.present(picker,animated: true)
-        }
-    }
+//    @IBAction func tapCamera(_ sender: UIButton) {
+//        
+//        //カメラが使えるかどうか判別するための情報を取得
+//        let camera = UIImagePickerControllerSourceType.camera
+//        
+//        //このアプリが起動されているデバイスにカメラ機能がついてるか判定
+//        if UIImagePickerController.isSourceTypeAvailable(camera){
+//            
+//            //ImgePickerControllerオブジェクトを作成
+//            let picker = UIImagePickerController()
+//            
+//            //カメラタイプに設定
+//            picker.sourceType = camera
+//            picker.delegate = self
+//            
+//            //pickerを表示
+//            self.present(picker,animated: true)
+//        }
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
         
         //imageに撮影した写真を代入
         //型キャスティング（型変換）
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+       
         self.firstPic.layer.cornerRadius = 35
         self.firstPic.layer.masksToBounds = true
         self.firstPic.image = image
         
-        //枠線
-//        self.firstPic.layer.borderColor = UIColor.black.cgColor
-//        self.firstPic.layer.borderWidth = 1
 
         
         //  自分のデバイスに（アプリが動いてる場所）に写真を保存
@@ -339,6 +339,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         //モーダルで表示した写真撮影用の画面を閉じる（前の画面に戻る）
         self.dismiss(animated: true)
+            
+        
         
         let assetURL:AnyObject = info[UIImagePickerControllerReferenceURL]! as AnyObject
         
@@ -361,6 +363,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             let gps = inputImage.properties["{GPS}"]
             
+            print(gps)
+            
             // ユーザーデフォルトを用意
             let myDefault = UserDefaults.standard
             
@@ -371,6 +375,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             myDefault.synchronize()
             
             self.controller.dismiss(animated: true)
+            
         })
         
     }
