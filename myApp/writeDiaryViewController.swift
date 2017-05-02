@@ -38,7 +38,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 
   override func viewDidLoad() {
         super.viewDidLoad()
-    
    
         read()
     
