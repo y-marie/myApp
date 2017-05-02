@@ -46,10 +46,6 @@ class showDiaryViewController: UIViewController {
         self.firstImage.layer.cornerRadius = 35
         self.firstImage.layer.masksToBounds = true
         
-        //枠線
-//        self.firstImage.layer.borderColor = UIColor.black.cgColor
-//        self.firstImage.layer.borderWidth = 1
-        
         //textfield枠線透明
         myTitle.borderStyle = .none
         myDate.borderStyle = .none
@@ -66,12 +62,12 @@ class showDiaryViewController: UIViewController {
                 
                     self.firstImage.image = image
             }
-            
         }
         print(diaryList)
         
     }
 
+    
     func read(){
         
         diaryList = NSMutableArray()
@@ -105,8 +101,6 @@ class showDiaryViewController: UIViewController {
                 
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
-                //("title:\(title) saveDate:\(saveDate)")
-                
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
                 
                 if saveDate == selectedSaveDate{
@@ -114,9 +108,7 @@ class showDiaryViewController: UIViewController {
                 }
                 
                 i = i + 1
-                
-                
-                
+
             }
         }catch{
         }

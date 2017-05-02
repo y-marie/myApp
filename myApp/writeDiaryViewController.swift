@@ -69,8 +69,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         //baseViewを下にぴったり配置、横幅ぴったりの大きさにしておく
         baseView.frame.origin = CGPoint(x: 0, y: self.view.frame.size.height)
         baseView.frame.size = CGSize(width: self.view.frame.size.width, height: baseView.frame.height)
-        
-        //baseViewに背景色をつける
+ 
         baseView.backgroundColor = UIColor.gray
         
         //元の画面に追加
@@ -149,8 +148,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         }else{
             
              myDate2.text = strSelectedDate
-            }
-        
+        }
     }
     
     //DatePickerが乗ったviewを隠す
@@ -181,26 +179,18 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             for result: AnyObject in fetchResults{
                 
                 let title: String? = result.value(forKey: "title") as? String
-                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                
                 let content: String? = result.value(forKey:"content") as? String
-                
                 let image1: String? = result.value(forKey: "image1") as? String
-                
                 let startDate: Date? = result.value(forKey: "startDate") as? Date
-                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
-                
                print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
-                
                 // ,":\()"  for copy
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"startDate":startDate,"content":content,"endDate":endDate])
             }
         }catch{
-
         }
 }
     @IBAction func tapToSave(_ sender: UIButton) {
@@ -242,25 +232,17 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             //TODO:値の代入を追加する
             newRecord.setValue(myTitle.text, forKey: "title")
-            
             newRecord.setValue(Date(), forKey:"saveDate")
-            
             newRecord.setValue(textToWrite.text, forKey:"content")
-            
             newRecord.setValue(nikki, forKey: "image1")
-            
             newRecord.setValue(dateDate, forKey: "startDate")
-            
             newRecord.setValue(dateDateDate, forKey: "endDate")
-
-            
             
             //alert
             let alertController = UIAlertController(title: "保存しました", message: "", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
            
             present(alertController, animated: true, completion: nil)
-            
             
             do {
                 
@@ -273,7 +255,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 //例外を書く
                 //errorの時とか
             }
-            
            // self.dismiss(animated: true)
         }
     }
@@ -320,26 +301,19 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        
-        
         //imageに撮影した写真を代入
         //型キャスティング（型変換）
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
        
         self.firstPic.layer.cornerRadius = 35
         self.firstPic.layer.masksToBounds = true
         self.firstPic.image = image
-        
-
         
         //  自分のデバイスに（アプリが動いてる場所）に写真を保存
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
         //モーダルで表示した写真撮影用の画面を閉じる（前の画面に戻る）
         self.dismiss(animated: true)
-            
-        
         
         let assetURL:AnyObject = info[UIImagePickerControllerReferenceURL]! as AnyObject
         
@@ -376,7 +350,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             self.controller.dismiss(animated: true)
             
         })
-        
     }
     
     @IBAction func tapToInsert(_ sender: UIButton) {

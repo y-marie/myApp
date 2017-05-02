@@ -86,34 +86,25 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         //配列初期化
         diaryList = NSMutableArray()
         
-        //AppDelegateを使う準備をしておく
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        //エンティティを操作するためのオブジェクトを作成
         let viewContext = appDelegate.persistentContainer.viewContext
         
-        //どのエンティティからdataを取得してくるか設定
         let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
         
         do{
-            //データを一括取得
-            let fetchResults = try viewContext.fetch(query)
             
-            //データの取得
+            let fetchResults = try viewContext.fetch(query)
+           
             var i = 0
             
             for result: AnyObject in fetchResults{
                 
                 let image1: String? = result.value(forKey: "image1") as? String
-                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                
                 let title: String? = result.value(forKey: "title") as? String
-                
                 let startDate: Date? = result.value(forKey: "startDate") as? Date
-                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
-                
                 let content: String? = result.value(forKey:"content") as? String
 
                 //imageから位置情報をとりだす
@@ -158,14 +149,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     
                     print(latitude)
                     print(longitude)
-                    
-                    //            let latitudef:Float = Float(dic["Latitude"])
-                    
+
                     let latitudef:Double = atof(latitude)
                     
                     let longitudef:Double = atof(longitude)
                     
-//                    print(latitudef)
+                    print(latitudef)
                     print(longitudef)
                     
                     //atof数字にする
@@ -183,10 +172,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                         //optional消す
                         myPin.tag = i
                 
-                        
                         self.map1.addAnnotation(myPin)
-                    
-                        
+                       
                   i = i + 1
                         
                         }
