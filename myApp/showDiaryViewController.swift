@@ -114,6 +114,17 @@ class showDiaryViewController: UIViewController {
         }
     }
     
+    @IBAction func tapToDelete(_ sender: UIBarButtonItem) {
+        
+        let alertController = UIAlertController(title: "削除しますか？", message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+
+    
     @IBAction func tapToShare(_ sender: UIBarButtonItem) {
         
         //アクティビティービュー作成
