@@ -6,8 +6,9 @@ import CoreData
 import Photos
 import Darwin
 import CoreLocation
+import GoogleMobileAds
 
-class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
+class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate,GADBannerViewDelegate {
     
     var selectedName:String = ""
     var selectedIndex = -1
@@ -16,6 +17,14 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
 
     var diaryList = NSMutableArray()
     var locationManager: CLLocationManager!
+    
+    // AdMob ID を入れてください
+    let AdMobID = "ca-app-pub-3530000000000000/0123456789"
+    let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"    //ID系はgitにpushする際載せないようにメモとかしておく。
+    
+    let AdMobTest:Bool = true
+    let SimulatorTest:Bool = false
+    
     
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 //        switch status {
@@ -61,10 +70,45 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         }
         
         //map1.userTrackingMode = MKUserTrackingMode.follow
+    
+        //広告を表示する関数を呼び出す
+        showAdBanner()
+    }
+    
+    //広告を表示する
+    func showAdBanner(){
+        
+        var admobView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - admobView.frame.height - 60)
+        
+        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+        admobView.adUnitID = AdMobID
+        admobView.delegate = self
+        admobView.rootViewController = self
+        
+        let admobRequest = GADRequest()
+        
+        if(AdMobTest){
+            // simulator テスト
+            if SimulatorTest {
+                admobRequest.testDevices = [kGADSimulatorID]
+                print("simulator")
+            }
+                // 実機テスト
+            else {
+                admobRequest.testDevices = [TEST_DEVICE_ID]
+                print("device")
+            }
+        }
+            // 本番
+            admobView.load(admobRequest)
+        
+        self.view.addSubview(admobView)
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+      override func viewWillAppear(_ animated: Bool) {
         
         read()
 

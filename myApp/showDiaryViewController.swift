@@ -118,14 +118,24 @@ class showDiaryViewController: UIViewController {
         
         let viewContext = appDelegate.persistentContainer.viewContext
         
-        let query:NSFetchRequest<DIARY> = DIARY.fetchRequest()
+        let request:NSFetchRequest<DIARY> = DIARY.fetchRequest()
         
         let namePredicte = NSPredicate(format: "saveDate = %@", selectedSaveDate as CVarArg)
-        query.predicate = namePredicte
+        
+        request.predicate = namePredicte
         
         do{
-            let fetchResults = try viewContext.fetch(query)
+            let fetchResults = try viewContext.fetch(request)
             
+            for result: AnyObject in fetchResults{
+                let record = result as! NSManagedObject
+                
+                //namePredicte.delete(record)
+            }
+            
+            try viewContext.save()
+            
+           
         }catch{
             
         }
