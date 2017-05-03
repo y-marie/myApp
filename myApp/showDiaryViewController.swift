@@ -64,9 +64,7 @@ class showDiaryViewController: UIViewController {
             }
         }
         print(diaryList)
-        
     }
-
     
     func read(){
         
@@ -113,17 +111,34 @@ class showDiaryViewController: UIViewController {
         }catch{
         }
     }
+   
+    func deleteData(){
+       
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let viewContext = appDelegate.persistentContainer.viewContext
+        
+        let query:NSFetchRequest<DIARY> = DIARY.fetchRequest()
+        
+        let namePredicte = NSPredicate(format: "saveDate = %@", selectedSaveDate as CVarArg)
+        query.predicate = namePredicte
+        
+        do{
+            let fetchResults = try viewContext.fetch(query)
+            
+        }catch{
+            
+        }
+    }
+    
     
     @IBAction func tapToDelete(_ sender: UIBarButtonItem) {
-        
+       //TODO:削除
         let alertController = UIAlertController(title: "削除しますか？", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }
-    
-    
-
     
     @IBAction func tapToShare(_ sender: UIBarButtonItem) {
         
