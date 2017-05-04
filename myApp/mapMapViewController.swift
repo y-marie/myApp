@@ -20,7 +20,8 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     
     // AdMob ID を入れてください
     let AdMobID = "ca-app-pub-3530000000000000/0123456789"
-    let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"    //ID系はgitにpushする際載せないようにメモとかしておく。
+    let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
+    //ID系はgitにpushする際載せないようにメモとかしておく。
     
     let AdMobTest:Bool = true
     let SimulatorTest:Bool = false
@@ -36,7 +37,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
 //            break
 //        }
 //    }
-    
     
     //中心地一度だけ現在地にする(フラグ)
     var regionout:Bool = false
@@ -182,7 +182,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     let latitude:String! = String(describing: gps["Latitude"]!)
                 
                     let longitude:String! = String(describing: gps["Longitude"]!)
-                
        
                     
         print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")

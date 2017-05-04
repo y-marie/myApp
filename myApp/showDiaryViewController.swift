@@ -111,6 +111,7 @@ class showDiaryViewController: UIViewController {
         }catch{
         }
     }
+    
    
     func deleteData(){
        
@@ -120,9 +121,16 @@ class showDiaryViewController: UIViewController {
         
         let request:NSFetchRequest<DIARY> = DIARY.fetchRequest()
         
+        //表示の時に使っているsavedateをdicに取ってくる
+        let dic = diaryList[selectedNomber] as! NSDictionary
+        selectedSaveDate = (dic["saveDate"] as! Date?)!
+
+        //savedate取ってくる
         let namePredicte = NSPredicate(format: "saveDate = %@", selectedSaveDate as CVarArg)
         
         request.predicate = namePredicte
+        
+        print(namePredicte)
         
         do{
             let fetchResults = try viewContext.fetch(request)
@@ -130,25 +138,46 @@ class showDiaryViewController: UIViewController {
             for result: AnyObject in fetchResults{
                 let record = result as! NSManagedObject
                 
-                //namePredicte.delete(record)
+                //１行ずつ削除
+                viewContext.delete(record)
             }
             
             try viewContext.save()
-            
            
-        }catch{
-            
+            //一個前のVCに戻る
+            navigationController?.popToViewController(navigationController!.viewControllers[0], animated: true)
+           
+        }catch{            
         }
     }
     
-    
-    @IBAction func tapToDelete(_ sender: UIBarButtonItem) {
-       //TODO:削除
+    @IBAction func tapToDelete(_ sender: UIButton) {
+        
+        //TODO:削除
         let alertController = UIAlertController(title: "削除しますか？", message: "", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // ② Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in self.deleteData()
+            print("OK")
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alertController.addAction(cancelAction)
+        alertController.addAction(defaultAction)
         
         present(alertController, animated: true, completion: nil)
     }
+    
     
     @IBAction func tapToShare(_ sender: UIBarButtonItem) {
         

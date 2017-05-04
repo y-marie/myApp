@@ -5,12 +5,10 @@
 //  Created by 有希 on 2017/03/27.
 //  Copyright © 2017年 Yuki Mitsudome. All rights reserved.
 
-
 import UIKit
 import Photos
 //import MobileCoreServices
 import CoreData
-
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
 
@@ -156,10 +154,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         UIView.animate(withDuration: 0.5, animations: {()
             -> Void in self.baseView.frame.origin = CGPoint(x: 0, y: self.view.bounds.height)
         })
-        
     }
 
-    
     func read(){
         
         diaryList = NSMutableArray()

@@ -14,13 +14,6 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        read()
-//        
-//        let dic = diaryList[selectedIndex] as! NSDictionary
-//        
-//        print(dic)
-        
-        //cell.textLabel?.text = dic["title"] as! String
     }
     
     override func viewWillAppear(_ animated: Bool) {
