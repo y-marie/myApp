@@ -19,12 +19,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     var locationManager: CLLocationManager!
     
     // AdMob ID を入れてください
-    let AdMobID = "ca-app-pub-3530000000000000/0123456789"
+    let AdMobID = ""
     let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
     //ID系はgitにpushする際載せないようにメモとかしておく。
     
-    let AdMobTest:Bool = true
-    let SimulatorTest:Bool = false
+    let AdMobTest:Bool = true        //testのときはtrue
+    let SimulatorTest:Bool = true
     
     
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -80,7 +80,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         
         var admobView = GADBannerView()
         admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - admobView.frame.height - 60)
+        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - admobView.frame.height - 45)
         
         admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
         admobView.adUnitID = AdMobID
