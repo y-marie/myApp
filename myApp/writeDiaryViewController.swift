@@ -241,7 +241,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             present(alertController, animated: true, completion: nil)
             
             do {
-                
                 try viewContext.save()
                 
                 myDefault.removeObject(forKey: "selectedPhotoURL")
@@ -359,7 +358,6 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             textToWrite?.text = myDefault.object(forKey:"memoMemo") as! String
         }
-       
     }
     
     @IBAction func tapToClose(_ sender: UITextField) {
