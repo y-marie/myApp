@@ -46,6 +46,12 @@ class showDiaryViewController: UIViewController {
         self.firstImage.layer.cornerRadius = 35
         self.firstImage.layer.masksToBounds = true
         
+        //画像枠線に色
+        
+//        self.firstImage.layer.borderColor = UIColor.blue.cgColor
+//        self.firstImage.layer.borderWidth = 10
+
+        
         //textfield枠線透明
         myTitle.borderStyle = .none
         myDate.borderStyle = .none
@@ -88,15 +94,10 @@ class showDiaryViewController: UIViewController {
             for result: AnyObject in fetchResults{
                 
                 let title: String? = result.value(forKey: "title") as? String
-                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                
                 let content: String? = result.value(forKey:"content") as? String
-                
                 let image1: String? = result.value(forKey: "image1") as? String
-                
                 let startDate: Date? = result.value(forKey: "startDate") as? Date
-                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
                 diaryList.add(["title":title, "saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
@@ -122,10 +123,12 @@ class showDiaryViewController: UIViewController {
         let request:NSFetchRequest<DIARY> = DIARY.fetchRequest()
         
         //表示の時に使っているsavedateをdicに取ってくる
+        //なんでか知らんけどsaveDateが何秒かずれてたから※本来なら以下２行不要
         let dic = diaryList[selectedNomber] as! NSDictionary
         selectedSaveDate = (dic["saveDate"] as! Date?)!
 
         //savedate取ってくる
+        //saveDate取ってくるとそれに紐づいたデータ(ディクショナリ一個分)も取れるタイトルなどはかぶる可能性があるためsaveDateを取得
         let namePredicte = NSPredicate(format: "saveDate = %@", selectedSaveDate as CVarArg)
         
         request.predicate = namePredicte

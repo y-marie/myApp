@@ -7,7 +7,7 @@
 
 import UIKit
 import Photos
-//import MobileCoreServices
+//import MobileCoreServices   これは何かな？笑
 import CoreData
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
@@ -120,10 +120,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
         
         default:
             return true
-            
         }
         return true
-        
     }
     
     //DatePickerで選択してる日付を変えた時、日付のTextFieldに値を表示
@@ -216,15 +214,12 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
             let mystart = DateFormatter()
             mystart.dateFormat = "yyyy/MM/dd"
-            
             let myend = DateFormatter()
             myend.dateFormat = "yyyy/MM/dd"
             
             //newRecord.setValue(mystart, forKey: "startDate")
             var dateDate = mystart.date(from: myDate.text!)
-            
             var dateDateDate = mystart.date(from: myDate2.text!)
-            
             
             //TODO:値の代入を追加する
             newRecord.setValue(myTitle.text, forKey: "title")
@@ -273,6 +268,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 
          }
     }
+    
+    //カメラ起動させるやつ。use photoってやった瞬間にエラー出た
     
 //    @IBAction func tapCamera(_ sender: UIButton) {
 //        
