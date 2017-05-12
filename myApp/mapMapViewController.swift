@@ -21,12 +21,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     var locationManager: CLLocationManager!
     
     // AdMob ID を入れてください  //365782自分の
-    let AdMobID = "ca-app-pub-2839436946548318/8504365782"
+    let AdMobID = ""
     let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
     //ID系はgitにpushする際載せないようにメモとかしておく。
     
-    let AdMobTest:Bool = false       //testのときはtrue
-    let SimulatorTest:Bool = false    //実機or審査に提出の際はfalse
+    let AdMobTest:Bool = true      //testのときはtrue
+    let SimulatorTest:Bool = true    //実機or審査に提出の際はfalse
     
     
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
