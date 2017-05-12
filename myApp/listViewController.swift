@@ -9,22 +9,16 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
      var diaryList = NSMutableArray()
     
+    //メンバ変数
     var selectedIndex = -1
     
+    //一度だけのやつな
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        read()
-//        
-//        let dic = diaryList[selectedIndex] as! NSDictionary
-//        
-//        print(dic)
-        
-        //cell.textLabel?.text = dic["title"] as! String
     }
     
+    //なんども呼ばれるやつな
     override func viewWillAppear(_ animated: Bool) {
-        
         read()
     }
     
@@ -51,15 +45,10 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             for result: AnyObject in fetchResults{
                 
                 let title: String? = result.value(forKey: "title") as? String
-                
                 let image1: String? = result.value(forKey: "image1") as? String
-                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                
                 let content: String? = result.value(forKey: "content") as? String
-                
-                let startDate: Date? = result.value(forKey: "startDate") as? Date
-                
+                let startDate: Date? = result.value(forKey: "startDate") as? Date                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
                 print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)" ,"startDate:\(startDate)","endDate:\(endDate)")

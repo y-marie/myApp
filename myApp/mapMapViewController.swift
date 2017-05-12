@@ -6,8 +6,11 @@ import CoreData
 import Photos
 import Darwin
 import CoreLocation
+import GoogleMobileAds
 
-class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
+class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate,GADBannerViewDelegate {
+    
+    // GADBannerViewDelegate 広告入れる時のプロトコル
     
     var selectedName:String = ""
     var selectedIndex = -1
@@ -16,6 +19,15 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
 
     var diaryList = NSMutableArray()
     var locationManager: CLLocationManager!
+    
+    // AdMob ID を入れてください  //365782自分の
+    let AdMobID = ""
+    let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
+    //ID系はgitにpushする際載せないようにメモとかしておく。
+    
+    let AdMobTest:Bool = true      //testのときはtrue
+    let SimulatorTest:Bool = true    //実機or審査に提出の際はfalse
+    
     
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 //        switch status {
@@ -27,7 +39,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
 //            break
 //        }
 //    }
-    
     
     //中心地一度だけ現在地にする(フラグ)
     var regionout:Bool = false
@@ -61,10 +72,45 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         }
         
         //map1.userTrackingMode = MKUserTrackingMode.follow
+    
+        //広告を表示する関数を呼び出す
+        showAdBanner()
+    }
+    
+    //広告を表示する
+    func showAdBanner(){
+        
+        var admobView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - admobView.frame.height - 45)
+        
+        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+        admobView.adUnitID = AdMobID
+        admobView.delegate = self
+        admobView.rootViewController = self
+        
+        let admobRequest = GADRequest()
+        
+        if(AdMobTest){
+            // simulator テスト
+            if SimulatorTest {
+                admobRequest.testDevices = [kGADSimulatorID]
+                print("simulator")
+            }
+                // 実機テスト
+            else {
+                admobRequest.testDevices = [TEST_DEVICE_ID]
+                print("device")
+            }
+        }
+            // 本番
+            admobView.load(admobRequest)
+        
+        self.view.addSubview(admobView)
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+      override func viewWillAppear(_ animated: Bool) {
         
         read()
 
@@ -86,34 +132,25 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
         //配列初期化
         diaryList = NSMutableArray()
         
-        //AppDelegateを使う準備をしておく
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        //エンティティを操作するためのオブジェクトを作成
         let viewContext = appDelegate.persistentContainer.viewContext
         
-        //どのエンティティからdataを取得してくるか設定
         let query: NSFetchRequest<DIARY> = DIARY.fetchRequest()
         
         do{
-            //データを一括取得
-            let fetchResults = try viewContext.fetch(query)
             
-            //データの取得
+            let fetchResults = try viewContext.fetch(query)
+           
             var i = 0
             
             for result: AnyObject in fetchResults{
                 
                 let image1: String? = result.value(forKey: "image1") as? String
-                
                 let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                
                 let title: String? = result.value(forKey: "title") as? String
-                
                 let startDate: Date? = result.value(forKey: "startDate") as? Date
-                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
-                
                 let content: String? = result.value(forKey:"content") as? String
 
                 //imageから位置情報をとりだす
@@ -147,7 +184,6 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     let latitude:String! = String(describing: gps["Latitude"]!)
                 
                     let longitude:String! = String(describing: gps["Longitude"]!)
-                
        
                     
         print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
@@ -158,14 +194,12 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     
                     print(latitude)
                     print(longitude)
-                    
-                    //            let latitudef:Float = Float(dic["Latitude"])
-                    
+
                     let latitudef:Double = atof(latitude)
                     
                     let longitudef:Double = atof(longitude)
                     
-//                    print(latitudef)
+                    print(latitudef)
                     print(longitudef)
                     
                     //atof数字にする
@@ -183,17 +217,13 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                         //optional消す
                         myPin.tag = i
                 
-                        
                         self.map1.addAnnotation(myPin)
-                    
-                        
+                       
                   i = i + 1
                         
                         }
                 }
-                    
                 }) }
-                
             }
         }catch{
     }
