@@ -268,7 +268,8 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 
          }
     }
-    
+    //TODO:error回収
+    //写真を撮るボタンが背面にいる。動かすとずれるので一旦削除して新ボタン追加。
     //カメラ起動させるやつ。use photoってやった瞬間にエラー出た
     
 //    @IBAction func tapCamera(_ sender: UIButton) {

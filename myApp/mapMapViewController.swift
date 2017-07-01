@@ -24,6 +24,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     let AdMobID = ""
     let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
     //ID系はgitにpushする際載せないようにメモとかしておく。
+    //載せちゃうと凍結。
     
     let AdMobTest:Bool = true      //testのときはtrue
     let SimulatorTest:Bool = true    //実機or審査に提出の際はfalse
