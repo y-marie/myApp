@@ -105,9 +105,7 @@ class showDiaryViewController: UIViewController {
                 if saveDate == selectedSaveDate{
                     selectedNomber = i
                 }
-                
                 i = i + 1
-
             }
         }catch{
         }

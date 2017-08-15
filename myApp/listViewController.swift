@@ -81,6 +81,42 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
 
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            
+            
+            // AppDelegateを使う用意をしておく
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            // エンティティを操作するためのオブジェクトを作成
+            let viewContext = appDelegate.persistentContainer.viewContext
+            
+            // どのエンティティからdataを取得してくるか設定
+            let request : NSFetchRequest<DIARY> = DIARY.fetchRequest()
+            do {
+                // 削除するデータを取得
+                let fetchResults = try viewContext.fetch(request)
+                for result: AnyObject in fetchResults {
+                    let record = result as! NSManagedObject
+                    // 一行ずつ削除
+                    viewContext.delete(record)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    
+                    diaryList.remove(at: indexPath.row)
+                    myTableView.deleteRows(at: [indexPath], with: .fade)
+                }
+                // 削除した状態を保存
+                try viewContext.save()
+            
+            } catch {
+            }
+        myTableView.reloadData()
+
+        }
+    
+    }
+    
     //セルが選択されたとき発動
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
