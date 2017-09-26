@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nZ3-4k-Vcf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nZ3-4k-Vcf">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -143,15 +143,6 @@
                                     <outlet property="delegate" destination="2yK-u6-M11" id="Tde-eY-v8d"/>
                                 </connections>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tr0-gz-PIf">
-                                <rect key="frame" x="199" y="148" width="77" height="30"/>
-                                <state key="normal" title="写真を撮る">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapCamera:" destination="2yK-u6-M11" eventType="touchUpInside" id="ocm-cs-kLx"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-GZ-evJ">
                                 <rect key="frame" x="16" y="186" width="288" height="166"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -192,6 +183,16 @@
                                     <action selector="PickImage:" destination="2yK-u6-M11" eventType="touchUpInside" id="NkU-dK-UzI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-Ak-LBY">
+                                <rect key="frame" x="204" y="148" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="写真を撮る">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapCamera:" destination="2yK-u6-M11" eventType="touchUpInside" id="1PA-EH-6ez"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -213,8 +214,6 @@
                             <constraint firstItem="Byp-m0-IiB" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" constant="183" id="Mtg-co-Lti"/>
                             <constraint firstItem="qFn-vn-qDD" firstAttribute="top" secondItem="JsF-Th-cYi" secondAttribute="bottom" constant="5" id="NIn-3D-50V"/>
                             <constraint firstItem="qFn-vn-qDD" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" constant="50" id="Q6B-Ip-D6H"/>
-                            <constraint firstItem="lX2-RW-uiO" firstAttribute="baseline" secondItem="tr0-gz-PIf" secondAttribute="baseline" id="Q9f-Ly-NGe"/>
-                            <constraint firstItem="Byp-m0-IiB" firstAttribute="leading" secondItem="tr0-gz-PIf" secondAttribute="leading" id="RvM-sR-TjM"/>
                             <constraint firstItem="d9Q-Du-GJT" firstAttribute="top" secondItem="zcj-GZ-evJ" secondAttribute="bottom" constant="28" id="TmB-Xo-GOO"/>
                             <constraint firstItem="H7K-dP-kk0" firstAttribute="bottom" secondItem="qFn-vn-qDD" secondAttribute="bottom" id="Vpq-o7-tSF"/>
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="leading" secondItem="H7K-dP-kk0" secondAttribute="leading" id="Yui-AZ-uMv"/>
@@ -226,9 +225,7 @@
                             <constraint firstItem="Zed-Km-cWC" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" id="k0w-tx-O8d"/>
                             <constraint firstItem="lX2-RW-uiO" firstAttribute="leading" secondItem="gs6-Kl-kGb" secondAttribute="leadingMargin" constant="28" id="k9E-yh-PEP"/>
                             <constraint firstItem="d9Q-Du-GJT" firstAttribute="top" secondItem="O3R-HU-LIB" secondAttribute="bottom" id="l6h-bP-skh"/>
-                            <constraint firstItem="tr0-gz-PIf" firstAttribute="leading" secondItem="lX2-RW-uiO" secondAttribute="trailing" constant="78" id="nTK-as-nbQ"/>
                             <constraint firstItem="Byp-m0-IiB" firstAttribute="leading" secondItem="2l7-zg-DIL" secondAttribute="trailing" constant="7" id="pzM-kl-Tes"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tr0-gz-PIf" secondAttribute="trailing" constant="28" id="sXC-VW-2An"/>
                             <constraint firstItem="VpS-Gv-hUQ" firstAttribute="top" secondItem="d9Q-Du-GJT" secondAttribute="bottom" constant="13" id="wdN-GR-n3w"/>
                             <constraint firstItem="Xg5-Zm-LOk" firstAttribute="centerX" secondItem="zcj-GZ-evJ" secondAttribute="centerX" id="xjx-Mb-FBU"/>
                             <constraint firstItem="JsF-Th-cYi" firstAttribute="trailing" secondItem="gs6-Kl-kGb" secondAttribute="trailingMargin" id="zQs-r7-Pmi"/>
@@ -380,7 +377,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="umi.png" translatesAutoresizingMaskIntoConstraints="NO" id="U4E-K6-6uY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-DM-9Xx">
                                 <rect key="frame" x="42" y="120" width="0.0" height="0.0"/>
@@ -400,7 +397,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HI7-79-iKX">
-                                <rect key="frame" x="16" y="376" width="288" height="145"/>
+                                <rect key="frame" x="16" y="371" width="288" height="145"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="145" id="6mh-Ah-L61"/>
@@ -409,7 +406,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boz-su-DMs">
-                                <rect key="frame" x="16" y="142" width="288" height="226"/>
+                                <rect key="frame" x="16" y="142" width="288" height="221"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXu-Iv-YGJ">
                                 <rect key="frame" x="187" y="108" width="115" height="30"/>
@@ -599,6 +596,6 @@
         <image name="umi.png" width="848" height="1508"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4Jc-Kj-iwi"/>
+        <segue reference="Wei-is-sKV"/>
     </inferredMetricsTieBreakers>
 </document>

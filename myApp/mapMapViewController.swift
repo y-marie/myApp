@@ -20,7 +20,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     var diaryList = NSMutableArray()
     var locationManager: CLLocationManager!
     
-    // AdMob ID を入れてください  //365782自分の
+    // AdMob ID を入れる  //365782自分の
     let AdMobID = ""
     let TEST_DEVICE_ID = "61b0154xxxxxxxxxxxxxxxxxxxxxxxe0"
     //ID系はgitにpushする際載せないようにメモとかしておく。
@@ -29,7 +29,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     let AdMobTest:Bool = true      //testのときはtrue
     let SimulatorTest:Bool = true    //実機or審査に提出の際はfalse
     
-    
+    //なんだこれは
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 //        switch status {
 //        case .notDetermined:
@@ -108,13 +108,10 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
             admobView.load(admobRequest)
         
         self.view.addSubview(admobView)
-        
     }
     
       override func viewWillAppear(_ animated: Bool) {
-        
         read()
-
     }
     
     // 位置情報が更新されるたびに呼ばれる

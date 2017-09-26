@@ -7,7 +7,7 @@
 
 import UIKit
 import Photos
-//import MobileCoreServices   これは何かな？笑
+import MobileCoreServices   //これは何かな？
 import CoreData
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
@@ -293,6 +293,27 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
 //            self.present(picker,animated: true)
 //        }
 //    }
+    
+    @IBAction func tapCamera(_ sender: UIButton) {
+        
+        //カメラが使えるかどうか判別するための情報を取得
+                let camera = UIImagePickerControllerSourceType.camera
+        
+        //このアプリが起動されているデバイスにカメラ機能がついてるか判定
+                if UIImagePickerController.isSourceTypeAvailable(camera){
+        
+        //            //ImgePickerControllerオブジェクトを作成
+                    let picker = UIImagePickerController()
+        
+        //            //カメラタイプに設定
+                    picker.sourceType = camera
+                    picker.delegate = self
+        
+                    //pickerを表示
+                   self.present(picker,animated: true)
+            }
+
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
