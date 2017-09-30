@@ -310,7 +310,10 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                     picker.delegate = self
         
                     //pickerを表示
-                   self.present(picker,animated: true)
+                //1   self.present(picker,animated: true)
+                    
+                //2
+                    self.present(controller, animated: true, completion: nil)
             }
 
     }

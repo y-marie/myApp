@@ -377,7 +377,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="umi.png" translatesAutoresizingMaskIntoConstraints="NO" id="U4E-K6-6uY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-DM-9Xx">
                                 <rect key="frame" x="42" y="120" width="0.0" height="0.0"/>
@@ -385,8 +385,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Cb-DP-lyC">
-                                <rect key="frame" x="56" y="108" width="105" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Cb-DP-lyC">
+                                <rect key="frame" x="68" y="108" width="93" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="2eE-dg-kHh"/>
@@ -397,8 +397,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HI7-79-iKX">
-                                <rect key="frame" x="16" y="371" width="288" height="145"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="376" width="288" height="145"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="145" id="6mh-Ah-L61"/>
                                 </constraints>
@@ -406,7 +406,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="boz-su-DMs">
-                                <rect key="frame" x="16" y="142" width="288" height="221"/>
+                                <rect key="frame" x="16" y="142" width="288" height="226"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXu-Iv-YGJ">
                                 <rect key="frame" x="187" y="108" width="115" height="30"/>
@@ -481,6 +481,7 @@
                             <constraint firstItem="dXu-Iv-YGJ" firstAttribute="top" secondItem="bAl-id-zlW" secondAttribute="bottom" constant="10" id="gVe-hq-4rq"/>
                             <constraint firstItem="1Cb-DP-lyC" firstAttribute="baseline" secondItem="dXu-Iv-YGJ" secondAttribute="baseline" id="hAF-LY-zyJ"/>
                             <constraint firstItem="tjj-EZ-2J3" firstAttribute="leading" secondItem="Kc5-b0-6B4" secondAttribute="leadingMargin" constant="11" id="i1Q-S5-Yga"/>
+                            <constraint firstItem="HI7-79-iKX" firstAttribute="top" secondItem="boz-su-DMs" secondAttribute="bottom" constant="8" id="kHw-4L-bwJ"/>
                             <constraint firstItem="uFA-Gx-6cf" firstAttribute="leading" secondItem="VgD-h0-KVF" secondAttribute="leading" id="lhn-P3-GTa"/>
                             <constraint firstItem="uFA-Gx-6cf" firstAttribute="leading" secondItem="Kc5-b0-6B4" secondAttribute="leadingMargin" id="o1h-C1-8pT"/>
                             <constraint firstItem="boz-su-DMs" firstAttribute="trailing" secondItem="HI7-79-iKX" secondAttribute="trailing" id="o61-Iy-bdH"/>
@@ -523,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBh-q4-MJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4491" y="-257"/>
+            <point key="canvasLocation" x="4490.625" y="-257.74647887323943"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="i9d-Z7-Y35">
@@ -596,6 +597,6 @@
         <image name="umi.png" width="848" height="1508"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wei-is-sKV"/>
+        <segue reference="4Jc-Kj-iwi"/>
     </inferredMetricsTieBreakers>
 </document>

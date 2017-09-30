@@ -30,6 +30,7 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
     let SimulatorTest:Bool = true    //実機or審査に提出の際はfalse
     
     //なんだこれは
+    //下で使用
 //    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 //        switch status {
 //        case .notDetermined:
