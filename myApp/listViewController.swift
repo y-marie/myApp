@@ -12,6 +12,12 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     //メンバ変数
     var selectedIndex = -1
     
+    // 絞り込み削除に使用
+    var dcSelectedDate = Date()
+    // 
+    var SaveDate:[Date] = []
+    
+    
     //一度だけのやつな
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +123,49 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     }
     
+    //セル削除
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+        
+        dcSelectedDate = SaveDate[indexPath.row] as Date
+        // AppDelegateを使う用意をしておく
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        // エンティティを操作するためのオブジェクトを作成
+        let viewContext = appDelegate.persistentContainer.viewContext
+        
+        // どのエンティティからdataを取得してくるか設定
+        let request : NSFetchRequest<DIARY> = DIARY.fetchRequest()
+        
+        // 絞り込み検索(更新したいデータを取得する)
+    let namePredicate =  NSPredicate(format: "saveDate = %@", dcSelectedDate as CVarArg)
+                    request.predicate = namePredicate
+        
+    do {
+    // 削除するデータを取得
+    let fetchResults = try viewContext.fetch(request)
+    for result: AnyObject in fetchResults {
+    let record = result as! NSManagedObject
+    // 一行ずつ削除
+     viewContext.delete(record)
+                        }
+    // 削除した状態を保存
+        try viewContext.save()
+                    } catch {
+            }
+        read()
+        }
+    
+    myTableView.reloadData()
+                
+
+    }
+
     //セルが選択されたとき発動
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
