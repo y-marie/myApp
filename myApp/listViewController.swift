@@ -86,7 +86,12 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         return cell
     }
 
+    //とりあえず入れた
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+      //セル削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -122,14 +127,16 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
     
     }
+  
     
-    //セル削除
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+  
+    
+    
+  
+   /*
     
    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+   
         if editingStyle == .delete {
         
         dcSelectedDate = SaveDate[indexPath.row] as Date
@@ -165,7 +172,7 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 
 
     }
-
+*/
     //セルが選択されたとき発動
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

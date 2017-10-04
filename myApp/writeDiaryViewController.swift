@@ -9,6 +9,8 @@ import UIKit
 import Photos
 import MobileCoreServices   //これは何かな？
 import CoreData
+import AVFoundation  //カメラ用フレームワーク
+
 
 class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
 
