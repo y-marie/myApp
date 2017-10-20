@@ -106,6 +106,11 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             
             // どのエンティティからdataを取得してくるか設定
             let request : NSFetchRequest<DIARY> = DIARY.fetchRequest()
+            
+            // 絞り込み検索(更新したいデータを取得する)
+            let namePredicate =  NSPredicate(format: "saveDate = %@", dcSelectedDate as CVarArg)
+            request.predicate = namePredicate
+            
             do {
                 // 削除するデータを取得
                 let fetchResults = try viewContext.fetch(request)
@@ -113,20 +118,24 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     let record = result as! NSManagedObject
                     // 一行ずつ削除
                     viewContext.delete(record)
+                 /*
+                     // 一行ずつ削除
+                    viewContext.delete(record)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     
                     diaryList.remove(at: indexPath.row)
                     myTableView.deleteRows(at: [indexPath], with: .fade)
+                    */
                 }
                 // 削除した状態を保存
                 try viewContext.save()
             
             } catch {
             }
+        read()
+        }
         myTableView.reloadData()
 
-        }
-    
     }
   
     
