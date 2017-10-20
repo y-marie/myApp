@@ -87,6 +87,7 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
 
     //とりあえず入れた
+    //swipe するためのメソッド？
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

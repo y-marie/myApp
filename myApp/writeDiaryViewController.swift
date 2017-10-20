@@ -195,7 +195,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
           let myDefault = UserDefaults.standard
         
         let nikki = myDefault.string(forKey: "selectedPhotoURL")
-        
+  
         if nikki == nil {
             
             let alertController = UIAlertController(title: "写真を選択してください", message: "", preferredStyle: .alert)
@@ -205,7 +205,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             present(alertController, animated: true, completion: nil)
             
         } else{
-            
+ 
             let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
             let viewContext = appDelegate.persistentContainer.viewContext
@@ -248,10 +248,10 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
                 //errorの時とか
             }
            // self.dismiss(animated: true)
-        }
+        //}
     }
 
-    @IBAction func PickImage(_ sender: UIButton) {
+        func PickImage(_ sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
             
@@ -275,47 +275,28 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     //TODO:error回収
     //写真を撮るボタンがいません。動かすとずれるので一旦削除して新ボタン追加。
     //カメラ起動させるやつ。use photoってやった瞬間にエラー
-    
-//    @IBAction func tapCamera(_ sender: UIButton) {
-//        
-//        //カメラが使えるかどうか判別するための情報を取得
-//        let camera = UIImagePickerControllerSourceType.camera
-//        
-//        //このアプリが起動されているデバイスにカメラ機能がついてるか判定
-//        if UIImagePickerController.isSourceTypeAvailable(camera){
-//            
-//            //ImgePickerControllerオブジェクトを作成
-//            let picker = UIImagePickerController()
-//            
-//            //カメラタイプに設定
-//            picker.sourceType = camera
-//            picker.delegate = self
-//            
-//            //pickerを表示
-//            self.present(picker,animated: true)
-//        }
-//    }
-    
-    @IBAction func tapCamera(_ sender: UIButton) {
+ 
+        func tapCamera(_ sender: UIButton) {
         
         //カメラが使えるかどうか判別するための情報を取得
-                let camera = UIImagePickerControllerSourceType.camera
+        let camera = UIImagePickerControllerSourceType.camera
         
         //このアプリが起動されているデバイスにカメラ機能がついてるか判定
-                if UIImagePickerController.isSourceTypeAvailable(camera){
+        if UIImagePickerController.isSourceTypeAvailable(camera){
         
-        //            //ImgePickerControllerオブジェクトを作成
-                    let picker = UIImagePickerController()
+        //ImgePickerControllerオブジェクトを作成
+        let picker = UIImagePickerController()
         
-        //            //カメラタイプに設定
-                    picker.sourceType = camera
-                    picker.delegate = self
+       //カメラタイプに設定
+       picker.sourceType = camera
+        picker.delegate = self
         
                     //pickerを表示
-                //1   self.present(picker,animated: true)
+       //1 ↓コメントアウトだったけど出してみた
+       self.present(picker,animated: true)
                     
-                //2
-                    self.present(controller, animated: true, completion: nil)
+       //2  逆にこっちをコメントアウトしてみた
+       // self.present(controller, animated: true, completion: nil)
             }
 
     }
@@ -372,6 +353,7 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
             
         })
     }
+    }
     
     @IBAction func tapToInsert(_ sender: UIButton) {
         
@@ -392,6 +374,5 @@ class writeDiaryViewController: UIViewController,UIImagePickerControllerDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         }
-    
-     }
+}
 

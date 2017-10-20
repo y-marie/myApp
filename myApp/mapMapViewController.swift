@@ -4,7 +4,7 @@ import UIKit
 import MapKit
 import CoreData
 import Photos
-import Darwin
+import Darwin  //数字関数
 import CoreLocation
 import GoogleMobileAds
 
@@ -145,44 +145,44 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
             
             for result: AnyObject in fetchResults{
                 
-                let image1: String? = result.value(forKey: "image1") as? String
-                let saveDate: Date? = result.value(forKey: "saveDate") as? Date
-                let title: String? = result.value(forKey: "title") as? String
-                let startDate: Date? = result.value(forKey: "startDate") as? Date
-                let endDate: Date? = result.value(forKey: "endDate") as? Date
-                let content: String? = result.value(forKey:"content") as? String
+    let image1: String? = result.value(forKey: "image1") as? String
+    let saveDate: Date? = result.value(forKey: "saveDate") as? Date
+    let title: String? = result.value(forKey: "title") as? String
+    let startDate: Date? = result.value(forKey: "startDate") as? Date
+    let endDate: Date? = result.value(forKey: "endDate") as? Date
+    let content: String? = result.value(forKey:"content") as? String
 
-                //imageから位置情報をとりだす
+    //imageから位置情報をとりだす
                 
-                if image1 != nil{
+    if image1 != nil{
                     
-                let url = URL(string: image1 as String!)
+    let url = URL(string: image1 as String!)
                 
-                let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
+    let fetchResult: PHFetchResult = PHAsset.fetchAssets(withALAssetURLs: [url!], options: nil)
                 
-                let asset = fetchResult.firstObject
+let asset = fetchResult.firstObject
                 
-                // コンテンツ編集セッションを開始するためのアセットの要求
-                asset?.requestContentEditingInput(with: nil, completionHandler: { contentEditingInput, info in
+    // コンテンツ編集セッションを開始するためのアセットの要求
+  asset?.requestContentEditingInput(with: nil, completionHandler: { contentEditingInput, info in
                     
-                    // contentEditingInput = 編集用のアセットに関する情報を提供するコンテナ
-                    let url = contentEditingInput?.fullSizeImageURL
+   // contentEditingInput = 編集用のアセットに関する情報を提供するコンテナ
+    let url = contentEditingInput?.fullSizeImageURL
                     
-                    // 対象アセットのURLからCIImageを生成
-                    let inputImage = CIImage(contentsOf: url!)!
+    // 対象アセットのURLからCIImageを生成
+    let inputImage = CIImage(contentsOf: url!)!
                     
-                    print( inputImage.properties);
+    print( inputImage.properties);
                     
-                    if inputImage.properties["{GPS}"] != nil{
+    if inputImage.properties["{GPS}"] != nil{
                     
-                    let gps:NSDictionary = inputImage.properties["{GPS}"] as! NSDictionary
+    let gps:NSDictionary = inputImage.properties["{GPS}"] as! NSDictionary
                     
-                    print(gps)
+    print(gps)
                 
                     
-                    let latitude:String! = String(describing: gps["Latitude"]!)
+    let latitude:String! = String(describing: gps["Latitude"]!)
                 
-                    let longitude:String! = String(describing: gps["Longitude"]!)
+    let longitude:String! = String(describing: gps["Longitude"]!)
        
                     
         print("image1:\(image1) saveDate:\(saveDate) title:\(title) latitude\(latitude) longitude:\(longitude)","content:\(content)","startDate:\(startDate)","ednDate:\(endDate)")
@@ -194,29 +194,29 @@ class mapMapViewController: UIViewController, MKMapViewDelegate,CLLocationManage
                     print(latitude)
                     print(longitude)
 
-                    let latitudef:Double = atof(latitude)
+    let latitudef:Double = atof(latitude)
                     
-                    let longitudef:Double = atof(longitude)
+    let longitudef:Double = atof(longitude)
                     
-                    print(latitudef)
-                    print(longitudef)
+    print(latitudef)
+    print(longitudef)
                     
                     //atof数字にする
                     
-                    if latitudef != nil {
-                        //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
+   if latitudef != nil {
+   //let coordinate = CLLocationCoordinate2DMake(atof(latitude),atof(longitude))
                         
-                        let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
+    let coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(latitudef), CLLocationDegrees(longitudef))
                         
-                        let myPin = CustomAnnotation()
+    let myPin = CustomAnnotation()
                         
-                        myPin.coordinate = coordinate
-                        myPin.coordinate = coordinate
-                        myPin.title = "\(title!)"
-                        //optional消す
-                        myPin.tag = i
+    myPin.coordinate = coordinate
+    myPin.coordinate = coordinate
+    myPin.title = "\(title!)"
+        //optional消す
+    myPin.tag = i
                 
-                        self.map1.addAnnotation(myPin)
+    self.map1.addAnnotation(myPin)
                        
                   i = i + 1
                         
