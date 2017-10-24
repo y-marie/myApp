@@ -12,12 +12,13 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     //メンバ変数
     var selectedIndex = -1
     
+    var selectedNomber:Int = -1
     // 絞り込み削除に使用
     var dcSelectedDate = Date()
     // 
     var SaveDate:[Date] = []
     
-    
+     var selectedSaveDate = Date()
     //一度だけのやつな
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,10 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 let startDate: Date? = result.value(forKey: "startDate") as? Date                
                 let endDate: Date? = result.value(forKey: "endDate") as? Date
                 
-                print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)" ,"startDate:\(startDate)","endDate:\(endDate)")
+    print("title:\(title)","saveDate:\(saveDate)","image1:\(image1)","content:\(content)" ,"startDate:\(startDate)","endDate:\(endDate)")
 //   ,":\()"    for copy
 
-                diaryList.add(["title":title,"saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
+    diaryList.add(["title":title,"saveDate":saveDate,"image1":image1,"content":content,"startDate":startDate,"endDate":endDate])
 //   ,"":
             }
         }catch{
@@ -88,16 +89,16 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
     //とりあえず入れた
     //swipe するためのメソッド？
+    /*
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    */
       //セル削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
-            
-            
-            
+        
             // AppDelegateを使う用意をしておく
             let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
@@ -107,6 +108,11 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             // どのエンティティからdataを取得してくるか設定
             let request : NSFetchRequest<DIARY> = DIARY.fetchRequest()
             
+            //表示の時に使っているsavedateをdicに取ってくる
+            //なんでか知らんけどsaveDateが何秒かずれてたから※本来なら以下２行不要
+            let dic = diaryList[selectedNomber] as! NSDictionary
+            selectedSaveDate = (dic["saveDate"] as! Date?)!
+
             // 絞り込み検索(更新したいデータを取得する)
             let namePredicate =  NSPredicate(format: "saveDate = %@", dcSelectedDate as CVarArg)
             request.predicate = namePredicate
@@ -122,10 +128,10 @@ class listViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                      // 一行ずつ削除
                     viewContext.delete(record)
                     tableView.deleteRows(at: [indexPath], with: .fade)
-                    
+                    */
                     diaryList.remove(at: indexPath.row)
                     myTableView.deleteRows(at: [indexPath], with: .fade)
-                    */
+                
                 }
                 // 削除した状態を保存
                 try viewContext.save()
